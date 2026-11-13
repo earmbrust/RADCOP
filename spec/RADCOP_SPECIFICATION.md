@@ -1,6 +1,6 @@
 # RADCOP Specification
 
-Version: **0.2.1-draft**  
+Version: **0.2.1-draft**
 Status: **Draft**  
 Scope: Repository documentation continuity, not agent communication or execution protocols.
 
