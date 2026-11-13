@@ -21,7 +21,7 @@ RAP documents are the project's source of truth. **You are a helper, not a new p
 - **PROJECT_STATE** owns **current factual state** and evidence. Its status observations prevail over contradictory *status statements* elsewhere, but it cannot override architecture or roadmap *decisions*. Reconcile state with both documents; preserve observed deviations as discrepancies until resolved.
 - No agent may silently invent, supersede, or rewrite accepted architectural or roadmap decisions. Ask for owner approval on substantive decision, scope, or acceptance changes. Proposed corrections are not accepted facts.
 - Source code/Git/tests can falsify a state claim, but do not become automatic permission to change intended architecture or scope.
-- For milestone closeout, an authorized owner's merge of an explicitly designated closeout PR constitutes acceptance. Do not request a second acceptance after that merge; do not infer acceptance from routine or automated merges.
+- For milestone closeout, seek explicit owner approval **before** merging the designated closeout PR. The PR must present the proposed acceptance disposition and update the owning documents so approval flows into `main` on merge. Never treat an unapproved or routine/automated merge as acceptance. Once the owner-approved closeout is merged, do not request a second acceptance.
 
 ## Operations
 
@@ -43,7 +43,7 @@ Produce a proposed change set aligning PROJECT_STATE to accepted ARCHITECTURE an
 
 ### sync
 
-After **verified** changes, propose or apply authorized documentation maintenance. Record actual implementation and evidence in PROJECT_STATE, reflect authorized milestone status in ROADMAP, and change ARCHITECTURE only for approved decisions. Do not mark work `Verified` without evidence or `Accepted` without authorized acceptance. For a designated milestone closeout, owner approval and merge supply acceptance evidence; sync should record that decision without imposing a redundant acceptance gate. If tools cannot write, output ready-to-apply patches or full replacement sections.
+After **verified** changes, propose or apply authorized documentation maintenance. Record actual implementation and evidence in PROJECT_STATE, reflect authorized milestone status in ROADMAP, and change ARCHITECTURE only for approved decisions. Do not mark work `Verified` without evidence or `Accepted` without authorized acceptance. For a designated milestone closeout, prepare the acceptance record in the PR and seek owner approval before merge. The approved merge incorporates the acceptance record; sync may reconcile factual merge metadata afterward without requiring another approval. If tools cannot write, output ready-to-apply patches or full replacement sections.
 
 ### init
 

@@ -19,14 +19,14 @@
 - M001: Owner accepted the initial specification, templates, skill, installer and validator on 2026-11-12.
 - M002: Required draft implementation is present. On 2026-11-13, source review found no conflict with the three-document authority model or new mandatory indexing, orchestration, or online services.
 - PR #1: Release automation, documentation reconciliation, and human-readable review guidance were merged on 2026-11-13 at `11e293b`.
-- M002: Owner approved and merged designated milestone closeout PR #2 on 2026-11-13; this constitutes acceptance. GitHub records merge commit `eb5efea69bfefb0b4934bd8bc3c18afe7db80b7b`.
+- M002: Owner approval preceded the merge of designated milestone closeout PR #2 on 2026-11-13; the merge incorporated the accepted milestone disposition. GitHub records merge commit `eb5efea69bfefb0b4934bd8bc3c18afe7db80b7b`.
 
 ## Accepted Decision Record
 - `ARCHITECTURE.md` governs design, constraints, and compliance; `ROADMAP.md` governs approved scope and sequencing subject to architecture; `PROJECT_STATE.md` governs current factual state, not decisions owned by the other documents.
 - RAP supports ordinary chats, single agents, and multiple agents without mandatory orchestration.
 - The `/rap` skill audits and maintains documentation but does not acquire decision authority.
 - Binding decisions remain in the owning root documents; optional archives preserve traceable supporting history.
-- Owner accepted M001 on 2026-11-12 and M002 on 2026-11-13. Designated milestone closeout approval and merge are an acceptance record; ordinary PR merges are not.
+- Owner accepted M001 on 2026-11-12 and M002 on 2026-11-13. Acceptance is requested and granted before merge of a designated closeout PR; the approved merge incorporates the decision into `main`. Ordinary PR merges do not establish acceptance.
 
 ## Known Issues and Discrepancies
 - M002 acceptance is complete via owner merge of designated PR #2. Hosted CI at the merge revision was not independently verified; do not convert this evidence limitation into a fabricated pass or an additional acceptance gate.
