@@ -1,12 +1,12 @@
 # Project State
 
 ## Current Snapshot
-- Active milestone: M002 — Refine long-term state tracking, archival guidance, and consistency validation.
-- M001 was owner-accepted on 2026-11-12. M002 implementation and source review are complete; current-revision CI evidence and separate owner acceptance remain outstanding.
-- Current implementation: RAP v0.2.0 draft specification, templates, optional skill, structural validator, archive-reference checks, and tests are on `main`. Release automation was merged through PR #1.
-- Repository baseline inspected: `main` at `11e293b0201891c17a5ff1633f5d9e640436556e` (PR #1 merge).
-- Last verified revision: The repository contents and merge were examined at `11e293b`; runtime execution and hosted CI results were not independently verified at that revision.
-- Last reconciled: 2026-11-13; M002 source-review closeout and merged-branch status, without claiming owner acceptance.
+- Active milestone: None. M002 was accepted on 2026-11-13; M003 remains planned, not activated.
+- M001 was owner-accepted on 2026-11-12. M002 was owner-accepted through the owner’s merge of explicitly designated closeout PR #2 on 2026-11-13.
+- Current implementation: RAP v0.2.0 draft specification, root templates, optional skill, structural validator, archive-reference checks, and tests are on `main`. Release automation and M002 closeout documentation were merged through PRs #1 and #2.
+- Repository baseline inspected: PR #2 merge commit `eb5efea69bfefb0b4934bd8bc3c18afe7db80b7b` on `main` (2026-11-13).
+- Verification provenance: Six passing local Python tests and zero structural findings were reported for the pre-merge closeout changes. The GitHub merge was independently confirmed; hosted CI success at the merged revision was not independently confirmed in this reconciliation.
+- Last reconciled: 2026-11-13; recognized owner approval through merge of designated M002 closeout PR #2. No extra post-merge acceptance is required.
 
 ## Verified Implementation
 - The merged tree contains specification §12 with bounded state, optional archives, safe condensation, and historical-record integrity.
@@ -19,17 +19,17 @@
 - M001: Owner accepted the initial specification, templates, skill, installer and validator on 2026-11-12.
 - M002: Required draft implementation is present. On 2026-11-13, source review found no conflict with the three-document authority model or new mandatory indexing, orchestration, or online services.
 - PR #1: Release automation, documentation reconciliation, and human-readable review guidance were merged on 2026-11-13 at `11e293b`.
-- M002 is not yet marked accepted; the owner acceptance gate remains separate from implementation and review.
+- M002: Owner approved and merged designated milestone closeout PR #2 on 2026-11-13; this constitutes acceptance. GitHub records merge commit `eb5efea69bfefb0b4934bd8bc3c18afe7db80b7b`.
 
 ## Accepted Decision Record
 - `ARCHITECTURE.md` governs design, constraints, and compliance; `ROADMAP.md` governs approved scope and sequencing subject to architecture; `PROJECT_STATE.md` governs current factual state, not decisions owned by the other documents.
 - RAP supports ordinary chats, single agents, and multiple agents without mandatory orchestration.
 - The `/rap` skill audits and maintains documentation but does not acquire decision authority.
 - Binding decisions remain in the owning root documents; optional archives preserve traceable supporting history.
-- Owner explicitly accepted M001 on 2026-11-12. No M002 acceptance or architecture expansion is inferred.
+- Owner accepted M001 on 2026-11-12 and M002 on 2026-11-13. Designated milestone closeout approval and merge are an acceptance record; ordinary PR merges are not.
 
 ## Known Issues and Discrepancies
-- M002 has completed source review but still requires successful relevant checks tied to the merged revision and explicit owner acceptance.
+- M002 acceptance is complete via owner merge of designated PR #2. Hosted CI at the merge revision was not independently verified; do not convert this evidence limitation into a fabricated pass or an additional acceptance gate.
 - Existing structural validation intentionally does not certify semantic accuracy, all Markdown link forms, or source-to-document correspondence; these are stated scope limits, not verified capabilities.
 - GitHub release publication and tagged-workflow execution remain unverified; neither is claimed as completed.
 
@@ -37,13 +37,13 @@
 - 2026-11-13: GitHub PR #1 is confirmed merged, with `main` at `11e293b0201891c17a5ff1633f5d9e640436556e`.
 - 2026-11-13: Read-only review of merged source for M002 criteria: specification §12, root templates, optional skill guidance, `scripts/validate_rap.py`, and `tests/test_tools.py`.
 - Earlier owner-provided local logs reported six successful Python tests and zero structural errors/warnings on the pre-merge branch. This is reported evidence, not independently reproduced execution at `11e293b`.
-- No success claim is made for GitHub Actions or a published GitHub Release. Owner acceptance of M002 is not yet recorded.
+- PR #2 was merged by the owner on 2026-11-13 at `eb5efea69bfefb0b4934bd8bc3c18afe7db80b7b`, establishing M002 acceptance. No success claim is made for GitHub Actions or a published GitHub Release.
 
 ## Handoff
-- Last completed action: M002 source-review closeout against the merged repository.
-- Next expected action: Run `python -m unittest discover -s tests -v` and `python scripts/validate_rap.py --root .` on `main` at an identifiable revision; verify CI status where available; request explicit M002 acceptance and reconcile the root documents accordingly.
-- Open blockers: Current-revision test/CI evidence and owner acceptance for M002.
-- Context/evidence gaps: No independently confirmed hosted workflow result or tagged-release execution.
+- Last completed action: M002 closeout PR #2 approved and merged by the owner; acceptance recognized and documented.
+- Next expected action: Review this post-merge documentation reconciliation on a short-lived branch and merge through PR; then prepare the v0.2.0 release separately. M003 remains planned pending authorization.
+- Open blockers: No M002 owner-acceptance blocker remains. Release publication and hosted workflow evidence are not yet verified.
+- Context/evidence gaps: No independently confirmed hosted workflow result or tagged-release execution. Local test evidence is attributed to the pre-merge run.
 
 ## Historical References
-- M001 implementation and PR #1 integration are traceable through Git history at `11e293b0201891c17a5ff1633f5d9e640436556e`. Optional archive records under `docs/rap/` are not required for M002.
+- M001 implementation and PR #1 integration are traceable through Git history at `11e293b0201891c17a5ff1633f5d9e640436556e`; M002 acceptance is traceable through merged PR #2 at `eb5efea69bfefb0b4934bd8bc3c18afe7db80b7b`. Optional archive records under `docs/rap/` are not required for M002.

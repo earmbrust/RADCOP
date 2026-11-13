@@ -31,6 +31,10 @@ The release workflow accepts only `vMAJOR.MINOR.PATCH` tags whose commits are in
 
 Start with the `ARCHITECTURE.md`, `ROADMAP.md`, and `PROJECT_STATE.md` diffs when they are present. They should indicate design implications, approved scope, actual outcomes, verification and risks, so reviewers can prioritize relevant source changes. Compare those statements to the code and test diff; do not assume an unchanged document proves there is no impact, or treat the documentation as a substitute for code review. Ask for a reconciliation when material changes are omitted or contradict the authoritative documents.
 
+## Milestone closeout approval
+
+Prepare the milestone closeout before merging, identifying the milestone, deliverables, verified checks and remaining evidence gaps. An owner-approved merge of a PR explicitly designated as that milestone's closeout constitutes owner acceptance; no second post-merge approval is needed. Do not treat ordinary implementation PRs, automated merges, or merges by unauthorized actors as milestone acceptance. After the merge, synchronize `ROADMAP.md` and `PROJECT_STATE.md` with the acceptance evidence without inventing missing test outcomes. This procedure is RAP repository guidance, not a requirement that every adopting project use GitHub.
+
 ## Public draft governance
 
 This is a draft proposal, not a formal standards-body specification. Changes to decision authority and required files should be reviewed explicitly before inclusion in the public spec.

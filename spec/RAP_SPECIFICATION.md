@@ -36,7 +36,7 @@ PROJECT_STATE MAY record decision history, rationale, and outcomes, but MUST NOT
 
 ## 4. Recommended sections
 
-The three files SHOULD use headings provided in `templates/`. Alternative headings are allowed if the same information is clearly available. A minimal RAP project MUST communicate (a) current state, (b) planned ordered work, and (c) design constraints. A status claim of `Verified` SHOULD include actual tests, result, and source revision. A status of `Accepted` MUST indicate authorized acceptance; implementers cannot infer it from tests alone.
+The three files SHOULD use headings provided in `templates/`. Alternative headings are allowed if the same information is clearly available. A minimal RAP project MUST communicate (a) current state, (b) planned ordered work, and (c) design constraints. A status claim of `Verified` SHOULD include actual tests, result, and source revision. A status of `Accepted` MUST indicate authorized acceptance; implementers cannot infer it from tests alone. A designated milestone closeout PR MAY record acceptance when the owner authorizes and merges it, as described in §14.
 
 ## 5. Skill semantics
 
@@ -108,3 +108,11 @@ RAP documents SHOULD make the intent, authorized scope, architectural implicatio
 The documents retain their respective authority: ARCHITECTURE records accepted design decisions, ROADMAP records approved work and sequencing, and PROJECT_STATE records observed results and evidence. A documentation-only change MUST NOT imply that implementation is verified, accepted, or compliant without supporting evidence.
 
 When a `/rap` audit has access to an implementation diff, it SHOULD compare documented outcomes and scope against the changed code and available test evidence, flag material omissions or inconsistencies, and identify portions not checked. Where the diff or repository cannot be inspected, the audit MUST NOT claim code-to-document correspondence. Reviewers MAY use RAP diffs to prioritize work, but MUST NOT treat them as independent proof of code correctness or use them to waive required review.
+
+## 14. Milestone closeout approval
+
+A milestone closeout SHOULD be proposed for owner review before merging its documentation into the authoritative branch. The closeout SHOULD identify the milestone, deliverables, actual verification evidence and its revision, outstanding limitations, and proposed acceptance disposition. The proposal MUST NOT present approval as already granted when it is still pending.
+
+For workflows using pull requests, an owner or explicitly delegated acceptance authority MAY accept a milestone by approving and merging a PR **explicitly designated as that milestone's closeout**. The authorized merge is acceptance evidence; a second post-merge approval is not required. Root documents SHOULD be updated to reflect the accepted status at or promptly after that merge, preserving the evidence and date or revision.
+
+A routine implementation PR, an automated merge, a merge by a person without acceptance authority, or an ambiguous PR designation MUST NOT be treated as milestone acceptance by inference. Where the intended disposition is unclear, report it rather than asserting acceptance. A recorded approval MUST NOT imply that unexecuted tests passed, that source satisfies every requirement, or that release publication occurred. This mechanism does not require Git, pull requests, or any specific hosting platform; an equivalently explicit owner decision is valid.
