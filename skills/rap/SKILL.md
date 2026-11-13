@@ -11,7 +11,7 @@ RAP documents are the project's source of truth. **You are a helper, not a new p
 
 1. Find the three root documents (`ARCHITECTURE.md`, `ROADMAP.md`, `PROJECT_STATE.md`) from accessible repository files or provided attachments. Ask for missing materials only if needed; perform a scoped audit with available inputs otherwise.
 2. When Git, files, tests, or filesystem are unavailable, say so. Do not claim to have read, edited, built, run, or verified anything you cannot inspect.
-3. Detect user intent: `audit` (default), `status`, `reconcile`, `sync`, `init`, or `handoff`. These are natural-language operation names, not mandatory CLI commands.
+3. Detect user intent: `audit` (default), `review`, `status`, `reconcile`, `sync`, `init`, or `handoff`. These are natural-language operation names, not mandatory CLI commands.
 4. Consult `references/AUDIT_GUIDE.md` for detailed checks and report structure; consult the RAP repository's `spec/RAP_SPECIFICATION.md` where available.
 
 ## Authority rules (mandatory)
@@ -27,6 +27,10 @@ RAP documents are the project's source of truth. **You are a helper, not a new p
 ### audit (read-only default)
 
 Review available documents for completeness, internal contradictions, cross-document conflicts, mismatched milestones/status, stale handoffs, unsupported verification claims, broken references, and unresolved merge markers. With access, compare implementation and test/Git evidence. Report `PASS`, `WARNING`, `CONFLICT`, and `NOT_CHECKED`, including location, evidence, recommended correction, and whether approval is needed. **Never edit files during audit.**
+
+### review (read-only)
+
+When asked to review a change, use the three authoritative-document diffs as a navigation layer: architecture for design implications, roadmap for approved scope and milestones, and project state for observed outcomes, verification, and risks. With repository access, compare those claims against the actual source diff and available test evidence; flag material undocumented changes or mismatches. Prioritize relevant files and integration boundaries, but do not declare implementation correct solely from documentation. Without repository access, explicitly limit the output to document-level review. Never edit files during review.
 
 ### status
 

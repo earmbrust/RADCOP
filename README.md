@@ -37,6 +37,7 @@ A RAP project contains exactly three required authoritative documents at its rep
 | Request | Behavior |
 | --- | --- |
 | `/rap audit` | Read-only report of completeness, contradictions, stale assertions, and evidence gaps |
+| `/rap review` | Review-oriented audit of documentation diffs against implementation changes when accessible |
 | `/rap status` | Summarize documented current state, scope, and audit coverage; do not invent observations |
 | `/rap reconcile` | Compare the three documents, and optionally implementation; propose corrections before substantive changes |
 | `/rap sync` | Maintain documentation from **verified** accepted changes, subject to approval and available write access |
@@ -60,13 +61,23 @@ These operations are **natural-language skill instructions**, not guaranteed sta
 
 See [Chat usage](docs/CHAT_USAGE.md), [Installations](docs/INTEGRATIONS.md), and [Contributing](CONTRIBUTING.md).
 
+## Reviewing changes with RAP
+
+RAP gives human reviewers a readable entry point into a code change. Review the documentation diff first to identify what was intended, which decisions or milestone boundaries changed, what was actually implemented, and what was verified:
+
+| Document diff | Review focus |
+| --- | --- |
+| `ARCHITECTURE.md` | Approved design changes, constraints, contracts, or compliance implications |
+| `ROADMAP.md` | Authorized scope, sequencing, acceptance criteria, and milestone status |
+| `PROJECT_STATE.md` | Actual outcomes, verification evidence, known deviations, and outstanding risks |
+
+This helps reviewers prioritize the relevant source files, interfaces, tests, and higher-risk changes instead of treating every line as equally significant. **Documentation is a review map, not proof of correctness or a substitute for inspecting implementation changes.** When repository access is available, `/rap audit` should compare the documented account against the actual diff and report omissions or contradictions.
+
+Review context lives alongside the code in version control, so it remains available to future maintainers, agents, and chat sessions. See [Specification §13](spec/RAP_SPECIFICATION.md).
+
 ## Release status
 
 **Draft v0.2.0** — initial public proposal; feedback and improvements welcome. Markdown documents and the skill are normative only to the extent specified in `spec/RAP_SPECIFICATION.md`. The Python validator checks structure, not semantic correctness.
-
-## License
-
-MIT; see [LICENSE](LICENSE).
 
 ## Long-running projects and state retention
 
@@ -75,3 +86,7 @@ RAP roots are **living current-context documents**, not unlimited transcripts. `
 For larger repositories, optional `docs/rap/milestones/` and `docs/rap/decisions/` records can preserve historical detail. Each archived item must be traceable from the owning root or an identifiable Git revision; archives never become competing authority. `/rap audit` can flag broken links and stale historical clutter; `/rap reconcile` can propose safe condensation, while `/rap sync` applies only authorized changes. No retrieval service, indexing system, or fixed size cap is required.
 
 See [State-tracking guide](skills/rap/references/STATE_TRACKING.md) and [Specification §12](spec/RAP_SPECIFICATION.md).
+
+## License
+
+MIT; see [LICENSE](LICENSE).

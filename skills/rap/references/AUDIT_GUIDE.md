@@ -12,6 +12,7 @@
 | Validation | Are status assertions distinguished from tested/accepted evidence? |
 | Handoff | Is next authorized work identifiable? Are blockers and unknowns clear? |
 | Concurrency | Are there conflict markers, unreviewed competing changes, or stale revisions? |
+| Change review | Do documentation diffs communicate intent, authorized scope, actual outcomes, verification, and risk? When source diffs are available, do they support those claims? |
 
 ## Required finding categories
 
@@ -43,6 +44,10 @@ Unresolved questions: [...]
 Actions performed: [read-only / specific edits]
 Not checked: [...]
 ```
+
+## Review navigation
+
+For a code review, read changes to the three authoritative documents first. Identify architectural decisions that changed, scope and milestone movement, actual implementation outcomes, evidence, and unresolved risks. Use those findings to direct inspection of the relevant source, tests, and interfaces. If the repository diff is available, compare it with the documentation and flag material changes not accurately represented. If the diff is unavailable, report code comparison as `NOT_CHECKED`. Documentation is not a substitute for code review or test evidence.
 
 ## No false certification
 
