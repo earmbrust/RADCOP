@@ -1,4 +1,4 @@
-﻿# Roadmap
+# Roadmap
 
 ## Objectives
 Publish a small, useful, agent- and chat-agnostic continuity protocol with a reusable audit skill.
@@ -11,7 +11,7 @@ Publish a small, useful, agent- and chat-agnostic continuity protocol with a reu
 | M003 | Gather additional interoperability feedback | Planned | M002 |
 
 ## Active Milestone
-### M002 â€” Refine long-term state tracking, archival guidance, and consistency validation
+### M002 — Refine long-term state tracking, archival guidance, and consistency validation
 
 **Status:** Active; implementation present on `main`, pending verification and owner acceptance.
 
@@ -19,9 +19,9 @@ Publish a small, useful, agent- and chat-agnostic continuity protocol with a reu
 
 **Objective:** Preserve durable continuity for long-running projects without introducing mandatory indexing or retrieval infrastructure.
 
-**Scope:** Bounded active state, optional traceable archives, specification Â§12, root templates, skill guidance, read-only archive-reference checking, and tests.
+**Scope:** Bounded active state, optional traceable archives, specification §12, root templates, skill guidance, read-only archive-reference checking, and tests.
 
-**Architectural references:** `ARCHITECTURE.md` and `spec/RAP_SPECIFICATION.md` Â§12.
+**Architectural references:** `ARCHITECTURE.md` and `spec/RAP_SPECIFICATION.md` §12.
 
 **Dependencies:** M001 (accepted 2026-11-12).
 
@@ -31,22 +31,22 @@ Publish a small, useful, agent- and chat-agnostic continuity protocol with a reu
 
 ## Upcoming Milestones
 
-### M003 â€” Gather additional interoperability feedback
+### M003 — Gather additional interoperability feedback
 
 Planned after M002 acceptance; improve compatibility without adding mandatory services.
 
 ## Completed Milestone Index
-- **M001 â€” Publish draft RAP specification and templates:** Owner accepted 2026-11-12. Initial deliverables are committed; acceptance was explicitly provided in the project discussion. Historical implementation details remain in Git.
+- **M001 — Publish draft RAP specification and templates:** Owner accepted 2026-11-12. Initial deliverables are committed; acceptance was explicitly provided in the project discussion. Historical implementation details remain in Git.
 
 ## Deferred or Out-of-scope Work
 No mandatory daemon, orchestration platform, online service, or agent communication protocol.
 
 ## Roadmap Change Log
-- Initial draft established, pending owner approval.
+- Initial draft established, subsequently accepted as M001 on 2026-11-12.
 - 2026-11-12 reconciliation: M001 explicitly owner-accepted, removing its acceptance blocker; M002 becomes active. No M002 acceptance, scope change, or new verification is implied.
 
 ## State Tracking Refinement Scope
-M002 deliverables remain specification Â§12, root templates, skill guidance, read-only archive reference checking, and tests. Verification and owner acceptance remain distinct from implementation presence.
+M002 deliverables remain specification §12, root templates, skill guidance, read-only archive reference checking, and tests. Verification and owner acceptance remain distinct from implementation presence.
 
 ## Release Infrastructure (Operational Work)
-Release automation is implemented on `chore/release-automation` at `ddd58fa` and awaits review/merge. It is not an accepted milestone completion or proof that a tagged release exists. Workflow results and publication must be established from GitHub after merge and tagging.
+Release automation and M001 reconciliation were consolidated in `f4732cc` on `chore/release-automation`; later review-documentation changes are also pushed to that branch. At the 2026-11-13 inspection, the branch was two commits ahead of `main` and not merged. No GitHub Release or hosted workflow result is claimed.
