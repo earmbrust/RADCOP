@@ -38,7 +38,3 @@ Prepare a milestone closeout PR identifying the milestone, deliverables, verific
 ## Public draft governance
 
 This is a draft proposal, not a formal standards-body specification. Changes to decision authority and required files should be reviewed explicitly before inclusion in the public spec.
-
-## Repository rebrand
-
-Apply the RADCOP naming changes through a reviewed PR. After merge, the owner renames the GitHub repository, updates local Git remotes, and verifies the canonical skill, release workflow, and documentation URLs. Historical v0.2.0 release artifacts are not rewritten.

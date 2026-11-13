@@ -36,10 +36,7 @@ No mandatory daemon, orchestration platform, online service, or agent communicat
 M002 deliverables remain specification §12, root templates, skill guidance, read-only archive reference checking, and tests. Verification and owner acceptance remain distinct from implementation presence.
 
 ## Release Infrastructure (Operational Work)
-PR #1 merged into `main` on 2026-11-13 at `11e293b0201891c17a5ff1633f5d9e640436556e`, including release automation, review-documentation guidance, and M001 reconciliation. The tagged-release workflow has not been verified through a published release; no GitHub Release is claimed.
+PR #1 merged into `main` on 2026-11-13 at `11e293b0201891c17a5ff1633f5d9e640436556e`, including release automation, review-documentation guidance, and M001 reconciliation. The tagged-release workflow subsequently completed successfully for v0.2.0 (run `43498181500`) and v0.2.1 (run `43502383093`), publishing ZIP archives and SHA-256 checksum assets.
 
 ## Milestone Acceptance Workflow
 Milestone closeout requires explicit owner approval **before** merge. The closeout PR must request that approval, identify its acceptance disposition, and include the corresponding root-document changes. Upon authorized approval, merging the PR carries the accepted disposition into `main`; acceptance is not a separate post-merge decision. An unapproved closeout, ordinary implementation PR, automated merge, or merge by an actor without delegated acceptance authority does not establish milestone acceptance. Later factual reconciliation of merge metadata does not add a second approval gate.
-
-## RADCOP Naming Transition (Operational Work)
-The owner authorized renaming the public-facing protocol and repository from RAP to RADCOP while retaining the expansion *Repository-native, Agent-agnostic Development Continuity Protocol*. This naming refactor does not reopen M001/M002, activate M003, or alter accepted architectural decisions. The existing v0.2.0 tag and release assets remain historical RAP artifacts; the renamed distribution is intended for a subsequent release after PR review, merge, and repository rename.

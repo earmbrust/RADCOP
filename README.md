@@ -79,7 +79,7 @@ Review context lives alongside the code in version control, so it remains availa
 
 ## Release status
 
-**Draft protocol** — v0.2.0 was published before the RADCOP rebrand; the renamed distribution will use a subsequent version. Feedback and improvements are welcome. Markdown documents and the skill are normative only to the extent specified in `spec/RADCOP_SPECIFICATION.md`. The Python validator checks structure, not semantic correctness.
+**RADCOP v0.2.1 — Draft protocol.** The current distribution is available as a [GitHub Release](https://github.com/earmbrust/RADCOP/releases/tag/v0.2.1). Feedback and improvements are welcome. Markdown documents and the skill are normative only to the extent specified in `spec/RADCOP_SPECIFICATION.md`. The Python validator checks structure, not semantic correctness or implementation compliance.
 
 ## Long-running projects and state retention
 
