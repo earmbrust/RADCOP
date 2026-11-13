@@ -100,3 +100,11 @@ A project MAY maintain an abbreviated root milestone history and archived suppor
 ### 12.4 Historical record integrity
 
 Historical records MUST distinguish accepted decisions from proposals and mark superseded decisions explicitly. History MUST NOT be edited to imply that current facts or decisions were always true. If an archive contradicts a root document, the owning root document governs current decisions/status in its own domain; the contradiction SHOULD be reported for investigation, rather than silently rewritten. Normal Git review/merge policies govern concurrent archival edits.
+
+## 13. Human-readable review context
+
+RAP documents SHOULD make the intent, authorized scope, architectural implications, observed outcome, relevant verification, and outstanding risks of a change discoverable through ordinary version-control diffs. They SHOULD allow reviewers to focus inspection on relevant code, integration boundaries, and tests without having to reconstruct every decision from source changes alone. This is a review aid, not an additional required document or review workflow.
+
+The documents retain their respective authority: ARCHITECTURE records accepted design decisions, ROADMAP records approved work and sequencing, and PROJECT_STATE records observed results and evidence. A documentation-only change MUST NOT imply that implementation is verified, accepted, or compliant without supporting evidence.
+
+When a `/rap` audit has access to an implementation diff, it SHOULD compare documented outcomes and scope against the changed code and available test evidence, flag material omissions or inconsistencies, and identify portions not checked. Where the diff or repository cannot be inspected, the audit MUST NOT claim code-to-document correspondence. Reviewers MAY use RAP diffs to prioritize work, but MUST NOT treat them as independent proof of code correctness or use them to waive required review.
