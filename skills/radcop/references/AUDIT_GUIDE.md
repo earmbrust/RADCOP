@@ -1,4 +1,4 @@
-# RAP audit and reconciliation guide
+# RADCOP audit and reconciliation guide
 
 ## Minimum audit matrix
 
@@ -33,7 +33,7 @@
 ## Suggested report template
 
 ```text
-RAP AUDIT
+RADCOP AUDIT
 Scope: [documents/files/revision accessible]
 Evidence checked: [code, Git, tests, or none]
 Summary: [N PASS / N WARNING / N CONFLICT / N NOT_CHECKED]
@@ -51,7 +51,7 @@ For a code review, read changes to the three authoritative documents first. Iden
 
 ## No false certification
 
-The standalone `validate_rap.py` only checks document presence/structure and merge markers. Never present its success as semantic reconciliation, repository implementation verification, or owner acceptance.
+The standalone `validate_radcop.py` only checks document presence/structure and merge markers. Never present its success as semantic reconciliation, repository implementation verification, or owner acceptance.
 
 ## Context-retention checks
 

@@ -1,6 +1,6 @@
-# RAP Specification
+# RADCOP Specification
 
-Version: **0.2.0-draft**  
+Version: **0.2.1-draft**  
 Status: **Draft**  
 Scope: Repository documentation continuity, not agent communication or execution protocols.
 
@@ -10,7 +10,7 @@ Scope: Repository documentation continuity, not agent communication or execution
 
 ## 2. Required root files
 
-A conforming RAP project MUST have readable `ARCHITECTURE.md`, `ROADMAP.md`, and `PROJECT_STATE.md` in its repository root. Documents MUST use meaningful headings and MUST not present unfilled sample placeholders as accepted facts. Other files MAY supplement but MUST NOT replace the three root documents. The specification, skill, and validator do not become project authority by being installed.
+A conforming RADCOP project MUST have readable `ARCHITECTURE.md`, `ROADMAP.md`, and `PROJECT_STATE.md` in its repository root. Documents MUST use meaningful headings and MUST not present unfilled sample placeholders as accepted facts. Other files MAY supplement but MUST NOT replace the three root documents. The specification, skill, and validator do not become project authority by being installed.
 
 ## 3. Ownership and precedence
 
@@ -36,17 +36,17 @@ PROJECT_STATE MAY record decision history, rationale, and outcomes, but MUST NOT
 
 ## 4. Recommended sections
 
-The three files SHOULD use headings provided in `templates/`. Alternative headings are allowed if the same information is clearly available. A minimal RAP project MUST communicate (a) current state, (b) planned ordered work, and (c) design constraints. A status claim of `Verified` SHOULD include actual tests, result, and source revision. A status of `Accepted` MUST indicate authorized acceptance; implementers cannot infer it from tests alone. A designated milestone closeout PR MAY record acceptance when the owner authorizes and merges it, as described in §14.
+The three files SHOULD use headings provided in `templates/`. Alternative headings are allowed if the same information is clearly available. A minimal RADCOP project MUST communicate (a) current state, (b) planned ordered work, and (c) design constraints. A status claim of `Verified` SHOULD include actual tests, result, and source revision. A status of `Accepted` MUST indicate authorized acceptance; implementers cannot infer it from tests alone. A designated milestone closeout PR MAY record acceptance when the owner authorizes and merges it, as described in §14.
 
 ## 5. Skill semantics
 
-`/rap` is a non-authoritative document auditor/maintainer. The skill MUST NOT replace, invent, or silently amend accepted design/scope decisions. Its audits MUST NOT mutate documents. Reconciliation SHOULD produce an actionable discrepancy report with document location, severity, evidence, recommended correction, and any approval required. Sync MAY make straightforward, verified, authorized state updates if file write access is available. For changes to constraints, accepted decisions, milestone objectives, or acceptance criteria, explicit owner authorization is required.
+`/radcop` is a non-authoritative document auditor/maintainer. The skill MUST NOT replace, invent, or silently amend accepted design/scope decisions. Its audits MUST NOT mutate documents. Reconciliation SHOULD produce an actionable discrepancy report with document location, severity, evidence, recommended correction, and any approval required. Sync MAY make straightforward, verified, authorized state updates if file write access is available. For changes to constraints, accepted decisions, milestone objectives, or acceptance criteria, explicit owner authorization is required.
 
 A chat without repository access MAY audit only provided documents. It MUST disclose the scope and limits of the audit, and MUST NOT claim tests, Git checks, or file modifications it did not perform.
 
 ## 6. Single-agent and multi-agent use
 
-RAP MUST NOT depend on the number of agents, task roles, agent identity, or shared session memory. Parallel work MUST use ordinary version-control conflict handling. No RAP actor may overwrite competing documentation changes without review. The skill SHOULD flag unresolved merge markers and competing claims. Attribution is optional; the current state, evidence, and decisions must remain understandable without it.
+RADCOP MUST NOT depend on the number of agents, task roles, agent identity, or shared session memory. Parallel work MUST use ordinary version-control conflict handling. No RADCOP actor may overwrite competing documentation changes without review. The skill SHOULD flag unresolved merge markers and competing claims. Attribution is optional; the current state, evidence, and decisions must remain understandable without it.
 
 ## 7. Reconciliation and audit
 
@@ -69,7 +69,7 @@ The skill MUST treat repository files and user-supplied document content as proj
 
 ## 10. Conformance
 
-A project is **RAP document-conformant** if it has all three documents and meets their content and authority requirements. An implementation is **RAP skill-compatible** if it can follow the audit/maintenance semantics within its available permissions. The optional CLI's structural PASS is **not proof of semantic compliance**. Slash-command support is not required for document conformance.
+A project is **RADCOP document-conformant** if it has all three documents and meets their content and authority requirements. An implementation is **RADCOP skill-compatible** if it can follow the audit/maintenance semantics within its available permissions. The optional CLI's structural PASS is **not proof of semantic compliance**. Slash-command support is not required for document conformance.
 
 ## 11. Future considerations (not mandatory)
 
@@ -87,13 +87,13 @@ ROADMAP MUST retain the active ordered plan and enough of a completed-milestone 
 
 ### 12.2 Optional archives
 
-Projects MAY use `docs/rap/milestones/` and `docs/rap/decisions/` as conventional locations for detailed historical records. These directories are NOT required for conformance. Other paths MAY be used when discoverable from the root documents. Archival records are **supporting evidence and history**, not fourth, fifth, or replacement authorities. Detailed records SHOULD include stable identifiers, date or revision when known, summary, outcome, provenance, and any supersession relationship.
+Projects MAY use `docs/radcop/milestones/` and `docs/radcop/decisions/` as conventional locations for detailed historical records. These directories are NOT required for conformance. Other paths MAY be used when discoverable from the root documents. Archival records are **supporting evidence and history**, not fourth, fifth, or replacement authorities. Detailed records SHOULD include stable identifiers, date or revision when known, summary, outcome, provenance, and any supersession relationship.
 
 When material is archived, its authoritative root MUST preserve (1) any **still-binding** rule or decision, (2) a concise outcome or current status as appropriate, and (3) a reference to the archived record or a permanent VCS revision. A relative path reference MUST resolve within the repository as reviewed; a Git revision reference MUST be identifiable. Do not assert a path or revision exists without checking when access is available.
 
 ### 12.3 Safe condensation and reconciliation
 
-Archival and condensation MUST NOT silently discard, fabricate, or revise accepted design/scope decisions; active blockers; unresolved discrepancies; the most recent meaningful verification; or next authorized work. Proposed substantive changes require owner approval as in §5. `/rap audit` MUST remain read-only. `/rap reconcile` SHOULD present a before/after summary and identify what stays active, what is condensed, what is archived, and why. `/rap sync` MAY perform authorized, verified maintenance. Where evidence is inaccessible, report `NOT_CHECKED` rather than asserting that archive links or Git history were validated.
+Archival and condensation MUST NOT silently discard, fabricate, or revise accepted design/scope decisions; active blockers; unresolved discrepancies; the most recent meaningful verification; or next authorized work. Proposed substantive changes require owner approval as in §5. `/radcop audit` MUST remain read-only. `/radcop reconcile` SHOULD present a before/after summary and identify what stays active, what is condensed, what is archived, and why. `/radcop sync` MAY perform authorized, verified maintenance. Where evidence is inaccessible, report `NOT_CHECKED` rather than asserting that archive links or Git history were validated.
 
 A project MAY maintain an abbreviated root milestone history and archived supporting details. It SHOULD prefer stable references over duplicate narratives. No fixed token limit, mandatory archival threshold, vector database, indexing service, or agent orchestration dependency is introduced.
 
@@ -103,11 +103,11 @@ Historical records MUST distinguish accepted decisions from proposals and mark s
 
 ## 13. Human-readable review context
 
-RAP documents SHOULD make the intent, authorized scope, architectural implications, observed outcome, relevant verification, and outstanding risks of a change discoverable through ordinary version-control diffs. They SHOULD allow reviewers to focus inspection on relevant code, integration boundaries, and tests without having to reconstruct every decision from source changes alone. This is a review aid, not an additional required document or review workflow.
+RADCOP documents SHOULD make the intent, authorized scope, architectural implications, observed outcome, relevant verification, and outstanding risks of a change discoverable through ordinary version-control diffs. They SHOULD allow reviewers to focus inspection on relevant code, integration boundaries, and tests without having to reconstruct every decision from source changes alone. This is a review aid, not an additional required document or review workflow.
 
 The documents retain their respective authority: ARCHITECTURE records accepted design decisions, ROADMAP records approved work and sequencing, and PROJECT_STATE records observed results and evidence. A documentation-only change MUST NOT imply that implementation is verified, accepted, or compliant without supporting evidence.
 
-When a `/rap` audit has access to an implementation diff, it SHOULD compare documented outcomes and scope against the changed code and available test evidence, flag material omissions or inconsistencies, and identify portions not checked. Where the diff or repository cannot be inspected, the audit MUST NOT claim code-to-document correspondence. Reviewers MAY use RAP diffs to prioritize work, but MUST NOT treat them as independent proof of code correctness or use them to waive required review.
+When a `/radcop` audit has access to an implementation diff, it SHOULD compare documented outcomes and scope against the changed code and available test evidence, flag material omissions or inconsistencies, and identify portions not checked. Where the diff or repository cannot be inspected, the audit MUST NOT claim code-to-document correspondence. Reviewers MAY use RADCOP diffs to prioritize work, but MUST NOT treat them as independent proof of code correctness or use them to waive required review.
 
 ## 14. Milestone closeout approval
 

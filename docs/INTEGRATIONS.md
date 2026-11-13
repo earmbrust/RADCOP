@@ -1,14 +1,14 @@
-# Install RAP skill across platforms
+# Install RADCOP skill across platforms
 
-The distribution's **canonical** skill is `skills/rap/`. The installer **copies** it to a platform-specific project skills folder so you don't need several separately maintained skill definitions. Commit the installed folder in your consuming repository if you want it available to collaborators.
+The distribution's **canonical** skill is `skills/radcop/`. The installer **copies** it to a platform-specific project skills folder so you don't need several separately maintained skill definitions. Commit the installed folder in your consuming repository if you want it available to collaborators.
 
 | Platform | Project install location |
 | --- | --- |
-| Cline | `.cline/skills/rap/` |
-| GitHub Copilot / VS Code | `.github/skills/rap/` |
-| OpenAI Codex | `.agents/skills/rap/` |
-| Claude Code | `.claude/skills/rap/` |
-| Cursor | `.cursor/skills/rap/` |
+| Cline | `.cline/skills/radcop/` |
+| GitHub Copilot / VS Code | `.github/skills/radcop/` |
+| OpenAI Codex | `.agents/skills/radcop/` |
+| Claude Code | `.claude/skills/radcop/` |
+| Cursor | `.cursor/skills/radcop/` |
 
 ```powershell
 python scripts/install_skill.py --platform cline --dest C:\development\my-project --dry-run

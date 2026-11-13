@@ -13,7 +13,7 @@ permissions:
 
 jobs:
   validate:
-    name: Validate RAP
+    name: Validate RADCOP
     runs-on: ubuntu-latest
 
     steps:
@@ -29,4 +29,4 @@ jobs:
         run: python -m unittest discover -s tests -v
 
       - name: Run structural validator
-        run: python scripts/validate_rap.py --root .
+        run: python scripts/validate_radcop.py --root .
