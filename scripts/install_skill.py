@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Copy canonical RAP skill to a selected workspace skills directory."""
+"""Copy canonical RADCOP skill to a selected workspace skills directory."""
 from __future__ import annotations
 
 import argparse
@@ -8,11 +8,11 @@ import shutil
 import sys
 
 TARGETS = {
-    "cline": ".cline/skills/rap",
-    "copilot": ".github/skills/rap",
-    "codex": ".agents/skills/rap",
-    "claude": ".claude/skills/rap",
-    "cursor": ".cursor/skills/rap",
+    "cline": ".cline/skills/radcop",
+    "copilot": ".github/skills/radcop",
+    "codex": ".agents/skills/radcop",
+    "claude": ".claude/skills/radcop",
+    "cursor": ".cursor/skills/radcop",
 }
 
 
@@ -21,9 +21,9 @@ def main() -> int:
     parser.add_argument("--platform", choices=sorted(TARGETS), required=True)
     parser.add_argument("--dest", type=Path, required=True, help="target repository root")
     parser.add_argument("--dry-run", action="store_true")
-    parser.add_argument("--force", action="store_true", help="replace a pre-existing RAP skill directory")
+    parser.add_argument("--force", action="store_true", help="replace a pre-existing RADCOP skill directory")
     args = parser.parse_args()
-    src = Path(__file__).resolve().parents[1] / "skills" / "rap"
+    src = Path(__file__).resolve().parents[1] / "skills" / "radcop"
     dest_root = args.dest.expanduser().resolve()
     target = dest_root / TARGETS[args.platform]
     if not (src / "SKILL.md").is_file():
@@ -46,7 +46,7 @@ def main() -> int:
         shutil.rmtree(target)
     target.parent.mkdir(parents=True, exist_ok=True)
     shutil.copytree(src, target)
-    print("Installed RAP skill. No RAP project documents modified.")
+    print("Installed RADCOP skill. No RADCOP project documents modified.")
     return 0
 
 

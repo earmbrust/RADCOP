@@ -44,7 +44,7 @@ jobs:
         run: python -m unittest discover -s tests -v
 
       - name: Run structural validator
-        run: python scripts/validate_rap.py --root .
+        run: python scripts/validate_radcop.py --root .
 
       - name: Create source archive
         env:
@@ -53,15 +53,15 @@ jobs:
         run: |
           set -euo pipefail
           mkdir -p dist
-          git archive --format=zip --prefix="RAP-${TAG}/" --output="dist/RAP-${TAG}.zip" "$TAGGED_SHA"
-          sha256sum "dist/RAP-${TAG}.zip" > "dist/RAP-${TAG}.zip.sha256"
+          git archive --format=zip --prefix="RADCOP-${TAG}/" --output="dist/RADCOP-${TAG}.zip" "$TAGGED_SHA"
+          sha256sum "dist/RADCOP-${TAG}.zip" > "dist/RADCOP-${TAG}.zip.sha256"
 
       - name: Verify archive contents
         env:
           TAG: ${{ github.ref_name }}
         run: |
           set -euo pipefail
-          unzip -Z1 "dist/RAP-${TAG}.zip" | tee dist/archive-contents.txt
+          unzip -Z1 "dist/RADCOP-${TAG}.zip" | tee dist/archive-contents.txt
           if grep -Eq '(^|/)\.git(/|$)|(^|/)\.github(/|$)|/(\.gitignore|\.gitattributes)$' dist/archive-contents.txt; then
             echo "The release archive contains repository-only files." >&2
             exit 1
@@ -73,9 +73,9 @@ jobs:
           TAG: ${{ github.ref_name }}
         run: |
           set -euo pipefail
-          assets=("dist/RAP-${TAG}.zip" "dist/RAP-${TAG}.zip.sha256")
+          assets=("dist/RADCOP-${TAG}.zip" "dist/RADCOP-${TAG}.zip.sha256")
           if gh release view "$TAG" --repo "$GITHUB_REPOSITORY" > /dev/null 2>&1; then
             gh release upload "$TAG" "${assets[@]}" --clobber --repo "$GITHUB_REPOSITORY"
           else
-            gh release create "$TAG" "${assets[@]}" --verify-tag --title "RAP ${TAG}" --generate-notes --repo "$GITHUB_REPOSITORY"
+            gh release create "$TAG" "${assets[@]}" --verify-tag --title "RADCOP ${TAG}" --generate-notes --repo "$GITHUB_REPOSITORY"
           fi

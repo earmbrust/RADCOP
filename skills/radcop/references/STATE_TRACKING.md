@@ -1,6 +1,6 @@
-# RAP state tracking and archival guide
+# RADCOP state tracking and archival guide
 
-This guide supports [RAP Specification §12](../../../spec/RAP_SPECIFICATION.md) when working from the source distribution. An installed skill might not include that specification; the rules below remain a portable summary.
+This guide supports [RADCOP Specification §12](../../../spec/RADCOP_SPECIFICATION.md) when working from the source distribution. An installed skill might not include that specification; the rules below remain a portable summary.
 
 ## Root document obligations
 

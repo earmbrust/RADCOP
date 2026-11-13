@@ -1,7 +1,7 @@
 # Architecture
 
 ## System Overview
-RAP is a Markdown-first documentation protocol distributed as a public specification, three templates, and a non-authoritative skill. It does not depend on execution environments.
+RADCOP is a Markdown-first documentation protocol distributed as a public specification, three templates, and a non-authoritative skill. It does not depend on execution environments.
 
 ## Accepted Design Decisions
 - ARCHITECTURE controls design decisions and constraints.
@@ -10,13 +10,13 @@ RAP is a Markdown-first documentation protocol distributed as a public specifica
 - Agent count, platform, or prior chat context are not prerequisites.
 
 ## Components and Interfaces
-- `spec/RAP_SPECIFICATION.md` is the published description of the protocol.
+- `spec/RADCOP_SPECIFICATION.md` is the published description of the protocol.
 - `templates/` supplies example forms of the three required project documents.
-- `skills/rap/` is an optional assistive auditor/maintainer.
+- `skills/radcop/` is an optional assistive auditor/maintainer.
 - `scripts/` contains optional standalone tooling, not a requirement for adoption.
 
 ## Data Flows
-Project docs are read by a chat or agent; a RAP audit finds discrepancies; approved corrections update the owning documents.
+Project docs are read by a chat or agent; a RADCOP audit finds discrepancies; approved corrections update the owning documents.
 
 ## Technical Constraints
 - Markdown in three root documents.
@@ -39,6 +39,6 @@ Future formal schema/CI integration remains optional and unapproved.
 
 ## Historical Record Architecture
 - Current state and authoritative requirements remain in the three root documents; archives are optional supporting history.
-- Completed milestone narratives and superseded decision rationale may use `docs/rap/milestones/` and `docs/rap/decisions/`, or other referenced paths.
+- Completed milestone narratives and superseded decision rationale may use `docs/radcop/milestones/` and `docs/radcop/decisions/`, or other referenced paths.
 - A durable reference from the owning root must remain whenever detail is archived.
 - No mandatory advanced retrieval, indexing, orchestration, or history database is permitted by this draft design.

@@ -3,7 +3,7 @@
 ## Current Snapshot
 - Active milestone: None. M002 was accepted on 2026-11-13; M003 remains planned, not activated.
 - M001 was owner-accepted on 2026-11-12. M002 was owner-accepted through the owner’s merge of explicitly designated closeout PR #2 on 2026-11-13.
-- Current implementation: RAP v0.2.0 draft specification, root templates, optional skill, structural validator, archive-reference checks, and tests are on `main`. Release automation and M002 closeout documentation were merged through PRs #1 and #2.
+- Current implementation: RADCOP v0.2.0 draft specification, root templates, optional skill, structural validator, archive-reference checks, and tests are on `main`. Release automation and M002 closeout documentation were merged through PRs #1 and #2.
 - Repository baseline inspected: PR #2 merge commit `eb5efea69bfefb0b4934bd8bc3c18afe7db80b7b` on `main` (2026-11-13).
 - Verification provenance: Six passing local Python tests and zero structural findings were reported for the pre-merge closeout changes. The GitHub merge was independently confirmed; hosted CI success at the merged revision was not independently confirmed in this reconciliation.
 - Last reconciled: 2026-11-13; recognized owner approval through merge of designated M002 closeout PR #2. No extra post-merge acceptance is required.
@@ -11,8 +11,8 @@
 ## Verified Implementation
 - The merged tree contains specification §12 with bounded state, optional archives, safe condensation, and historical-record integrity.
 - Root templates retain current state, active milestone, completed milestone index, constraints, and handoff obligations in their respective ownership domains.
-- The `/rap` skill and state-tracking guidance describe read-only auditing, reconciliation, authorized synchronization, archive traceability, and evidence limitations.
-- The Python structural validator checks the required root files and conventional inline links to optional `docs/rap/` archives; associated tests cover existing and missing archive references. This does not constitute a full semantic or Markdown-link audit.
+- The `/radcop` skill and state-tracking guidance describe read-only auditing, reconciliation, authorized synchronization, archive traceability, and evidence limitations.
+- The Python structural validator checks the required root files and conventional inline links to optional `docs/radcop/` archives; associated tests cover existing and missing archive references. This does not constitute a full semantic or Markdown-link audit.
 - PR #1 merged CI and tagged-release workflow definitions into `main`. Hosted runs and published release behavior are not established by source inspection alone.
 
 ## Actions and Outcomes
@@ -23,8 +23,8 @@
 
 ## Accepted Decision Record
 - `ARCHITECTURE.md` governs design, constraints, and compliance; `ROADMAP.md` governs approved scope and sequencing subject to architecture; `PROJECT_STATE.md` governs current factual state, not decisions owned by the other documents.
-- RAP supports ordinary chats, single agents, and multiple agents without mandatory orchestration.
-- The `/rap` skill audits and maintains documentation but does not acquire decision authority.
+- RADCOP supports ordinary chats, single agents, and multiple agents without mandatory orchestration.
+- The `/radcop` skill audits and maintains documentation but does not acquire decision authority.
 - Binding decisions remain in the owning root documents; optional archives preserve traceable supporting history.
 - Owner accepted M001 on 2026-11-12 and M002 on 2026-11-13. Acceptance is requested and granted before merge of a designated closeout PR; the approved merge incorporates the decision into `main`. Ordinary PR merges do not establish acceptance.
 
@@ -35,9 +35,12 @@
 
 ## Verification Evidence
 - 2026-11-13: GitHub PR #1 is confirmed merged, with `main` at `11e293b0201891c17a5ff1633f5d9e640436556e`.
-- 2026-11-13: Read-only review of merged source for M002 criteria: specification §12, root templates, optional skill guidance, `scripts/validate_rap.py`, and `tests/test_tools.py`.
+- 2026-11-13: Read-only review of merged source for M002 criteria: specification §12, root templates, optional skill guidance, `scripts/validate_radcop.py`, and `tests/test_tools.py`.
 - Earlier owner-provided local logs reported six successful Python tests and zero structural errors/warnings on the pre-merge branch. This is reported evidence, not independently reproduced execution at `11e293b`.
 - PR #2 was merged by the owner on 2026-11-13 at `eb5efea69bfefb0b4934bd8bc3c18afe7db80b7b`, establishing M002 acceptance. No success claim is made for GitHub Actions or a published GitHub Release.
+
+## Rebrand Implementation (Pending Merge)
+- 2026-11-13: The owner authorized a RAP-to-RADCOP naming refactor after the v0.2.0 release; this branch updates naming and tool paths without changing the accepted document authority model or M003 activation. Repository rename and the next release remain separate, unverified operations until completed.
 
 ## Handoff
 - Last completed action: M002 closeout PR #2 approved and merged by the owner; acceptance recognized and documented.
@@ -46,4 +49,4 @@
 - Context/evidence gaps: No independently confirmed hosted workflow result or tagged-release execution. Local test evidence is attributed to the pre-merge run.
 
 ## Historical References
-- M001 implementation and PR #1 integration are traceable through Git history at `11e293b0201891c17a5ff1633f5d9e640436556e`; M002 acceptance is traceable through merged PR #2 at `eb5efea69bfefb0b4934bd8bc3c18afe7db80b7b`. Optional archive records under `docs/rap/` are not required for M002.
+- M001 implementation and PR #1 integration are traceable through Git history at `11e293b0201891c17a5ff1633f5d9e640436556e`; M002 acceptance is traceable through merged PR #2 at `eb5efea69bfefb0b4934bd8bc3c18afe7db80b7b`. Optional archive records under `docs/radcop/` are not required for M002.

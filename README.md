@@ -1,8 +1,10 @@
-# RAP — Repository-native, Agent-agnostic Development Continuity Protocol
+# RADCOP — Repository-native, Agent-agnostic Development Continuity Protocol
 
-**RAP** is a small, Markdown-first standard for preserving development continuity across chats, coding agents, IDEs, and human contributors. Its authority resides in the repository's documentation, **not** in a skill, model, agent, session, or orchestration tool.
+**RADCOP** is a small, Markdown-first standard for preserving development continuity across chats, coding agents, IDEs, and human contributors. Its authority resides in the repository's documentation, **not** in a skill, model, agent, session, or orchestration tool.
 
-A RAP project contains exactly three required authoritative documents at its repository root:
+**Protect and Serve Your Development Process.** RADCOP keeps project decisions, progress, and verification visible to people and agents; it audits and reports discrepancies without acquiring decision authority.
+
+A RADCOP project contains exactly three required authoritative documents at its repository root:
 
 | Document | Authority |
 | --- | --- |
@@ -10,45 +12,45 @@ A RAP project contains exactly three required authoritative documents at its rep
 | `ROADMAP.md` | Accepted objectives, ordered milestones, scope, dependencies, and acceptance criteria. Must comply with architecture. |
 | `PROJECT_STATE.md` | Authoritative record of **current actual state**, recorded actions, decision outcomes, verification, and open discrepancies. Current-state observations take precedence over contrary progress claims elsewhere, but **do not override decisions** in architecture or roadmap. Must be reconciled to both. |
 
-`/rap` is an **optional, reusable skill** for checking, maintaining, and auditing the documents. The standard works without the skill, in single- and multi-agent setups, and in chats with or without filesystem access.
+`/radcop` is an **optional, reusable skill** for checking, maintaining, and auditing the documents. The standard works without the skill, in single- and multi-agent setups, and in chats with or without filesystem access.
 
 ## Get started
 
 1. Copy `templates/ARCHITECTURE.md`, `templates/ROADMAP.md`, and `templates/PROJECT_STATE.md` into your project root, removing the `templates/` prefix. Fill in actual information; do not treat placeholders as facts.
-2. Read [the specification](spec/RAP_SPECIFICATION.md), especially authority and reconciliation rules.
-3. Optionally install the skill into your project from the RAP distribution:
+2. Read [the specification](spec/RADCOP_SPECIFICATION.md), especially authority and reconciliation rules.
+3. Optionally install the skill into your project from the RADCOP distribution:
 
    ```powershell
    python scripts/install_skill.py --platform cline --dest C:\development\my-project
    python scripts/install_skill.py --platform copilot --dest C:\development\my-project
    ```
 
-   Other supported values: `codex`, `claude`, `cursor`. Use `--dry-run` to preview; use `--force` only when intentionally replacing an existing RAP skill.
+   Other supported values: `codex`, `claude`, `cursor`. Use `--dry-run` to preview; use `--force` only when intentionally replacing an existing RADCOP skill.
 4. Run the optional, read-only structural validator from within your project:
 
    ```powershell
-   python C:\path\to\RAP\scripts\validate_rap.py --root C:\development\my-project
+   python C:\path\to\RADCOP\scripts\validate_radcop.py --root C:\development\my-project
    ```
 
-5. Ask your assistant to **“Use RAP to audit these documents”** or invoke `/rap` if its platform supports slash-command skill invocation.
+5. Ask your assistant to **“Use RADCOP to audit these documents”** or invoke `/radcop` if its platform supports slash-command skill invocation.
 
 ## Skill operations
 
 | Request | Behavior |
 | --- | --- |
-| `/rap audit` | Read-only report of completeness, contradictions, stale assertions, and evidence gaps |
-| `/rap review` | Review-oriented audit of documentation diffs against implementation changes when accessible |
-| `/rap status` | Summarize documented current state, scope, and audit coverage; do not invent observations |
-| `/rap reconcile` | Compare the three documents, and optionally implementation; propose corrections before substantive changes |
-| `/rap sync` | Maintain documentation from **verified** accepted changes, subject to approval and available write access |
-| `/rap init` | Offer missing document templates without overwriting existing material |
-| `/rap handoff` | Audit whether another chat or agent can continue from the documents; propose missing context |
+| `/radcop audit` | Read-only report of completeness, contradictions, stale assertions, and evidence gaps |
+| `/radcop review` | Review-oriented audit of documentation diffs against implementation changes when accessible |
+| `/radcop status` | Summarize documented current state, scope, and audit coverage; do not invent observations |
+| `/radcop reconcile` | Compare the three documents, and optionally implementation; propose corrections before substantive changes |
+| `/radcop sync` | Maintain documentation from **verified** accepted changes, subject to approval and available write access |
+| `/radcop init` | Offer missing document templates without overwriting existing material |
+| `/radcop handoff` | Audit whether another chat or agent can continue from the documents; propose missing context |
 
-These operations are **natural-language skill instructions**, not guaranteed standalone CLI commands. A platform can expose `/rap` directly or users can request an operation conversationally.
+These operations are **natural-language skill instructions**, not guaranteed standalone CLI commands. A platform can expose `/radcop` directly or users can request an operation conversationally.
 
 ## Authority in one sentence
 
-**Architecture governs design; Roadmap governs approved work; Project State governs what is currently true, while remaining consistent with decisions in the other two.** When a contradiction exists, RAP reports it rather than secretly changing a decision or rewriting observed facts.
+**Architecture governs design; Roadmap governs approved work; Project State governs what is currently true, while remaining consistent with decisions in the other two.** When a contradiction exists, RADCOP reports it rather than secretly changing a decision or rewriting observed facts.
 
 ## Design properties
 
@@ -57,13 +59,13 @@ These operations are **natural-language skill instructions**, not guaranteed sta
 - No proprietary APIs, runtime, orchestration framework, or programming language required.
 - Read-only audits by default. Material decision or scope changes require owner authorization.
 - Evidence provenance and audit scope must be disclosed; code, tests, and Git history provide *evidence*, not automatic authorization to change the design.
-- Multi-agent concurrent writes rely on existing Git merge/review mechanisms, not a RAP lock service.
+- Multi-agent concurrent writes rely on existing Git merge/review mechanisms, not a RADCOP lock service.
 
 See [Chat usage](docs/CHAT_USAGE.md), [Installations](docs/INTEGRATIONS.md), and [Contributing](CONTRIBUTING.md).
 
-## Reviewing changes with RAP
+## Reviewing changes with RADCOP
 
-RAP gives human reviewers a readable entry point into a code change. Review the documentation diff first to identify what was intended, which decisions or milestone boundaries changed, what was actually implemented, and what was verified:
+RADCOP gives human reviewers a readable entry point into a code change. Review the documentation diff first to identify what was intended, which decisions or milestone boundaries changed, what was actually implemented, and what was verified:
 
 | Document diff | Review focus |
 | --- | --- |
@@ -71,21 +73,21 @@ RAP gives human reviewers a readable entry point into a code change. Review the 
 | `ROADMAP.md` | Authorized scope, sequencing, acceptance criteria, and milestone status |
 | `PROJECT_STATE.md` | Actual outcomes, verification evidence, known deviations, and outstanding risks |
 
-This helps reviewers prioritize the relevant source files, interfaces, tests, and higher-risk changes instead of treating every line as equally significant. **Documentation is a review map, not proof of correctness or a substitute for inspecting implementation changes.** When repository access is available, `/rap audit` should compare the documented account against the actual diff and report omissions or contradictions.
+This helps reviewers prioritize the relevant source files, interfaces, tests, and higher-risk changes instead of treating every line as equally significant. **Documentation is a review map, not proof of correctness or a substitute for inspecting implementation changes.** When repository access is available, `/radcop audit` should compare the documented account against the actual diff and report omissions or contradictions.
 
-Review context lives alongside the code in version control, so it remains available to future maintainers, agents, and chat sessions. See [Specification §13](spec/RAP_SPECIFICATION.md).
+Review context lives alongside the code in version control, so it remains available to future maintainers, agents, and chat sessions. See [Specification §13](spec/RADCOP_SPECIFICATION.md).
 
 ## Release status
 
-**Draft v0.2.0** — initial public proposal; feedback and improvements welcome. Markdown documents and the skill are normative only to the extent specified in `spec/RAP_SPECIFICATION.md`. The Python validator checks structure, not semantic correctness.
+**Draft protocol** — v0.2.0 was published before the RADCOP rebrand; the renamed distribution will use a subsequent version. Feedback and improvements are welcome. Markdown documents and the skill are normative only to the extent specified in `spec/RADCOP_SPECIFICATION.md`. The Python validator checks structure, not semantic correctness.
 
 ## Long-running projects and state retention
 
-RAP roots are **living current-context documents**, not unlimited transcripts. `PROJECT_STATE.md` should retain active implementation, meaningful verification, current discrepancies, and the handoff. `ROADMAP.md` keeps the approved active/future plan plus a concise completed-milestone index. `ARCHITECTURE.md` must retain all currently binding decisions even when detailed rationale is archived.
+RADCOP roots are **living current-context documents**, not unlimited transcripts. `PROJECT_STATE.md` should retain active implementation, meaningful verification, current discrepancies, and the handoff. `ROADMAP.md` keeps the approved active/future plan plus a concise completed-milestone index. `ARCHITECTURE.md` must retain all currently binding decisions even when detailed rationale is archived.
 
-For larger repositories, optional `docs/rap/milestones/` and `docs/rap/decisions/` records can preserve historical detail. Each archived item must be traceable from the owning root or an identifiable Git revision; archives never become competing authority. `/rap audit` can flag broken links and stale historical clutter; `/rap reconcile` can propose safe condensation, while `/rap sync` applies only authorized changes. No retrieval service, indexing system, or fixed size cap is required.
+For larger repositories, optional `docs/radcop/milestones/` and `docs/radcop/decisions/` records can preserve historical detail. Each archived item must be traceable from the owning root or an identifiable Git revision; archives never become competing authority. `/radcop audit` can flag broken links and stale historical clutter; `/radcop reconcile` can propose safe condensation, while `/radcop sync` applies only authorized changes. No retrieval service, indexing system, or fixed size cap is required.
 
-See [State-tracking guide](skills/rap/references/STATE_TRACKING.md) and [Specification §12](spec/RAP_SPECIFICATION.md).
+See [State-tracking guide](skills/radcop/references/STATE_TRACKING.md) and [Specification §12](spec/RADCOP_SPECIFICATION.md).
 
 ## License
 

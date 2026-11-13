@@ -6,7 +6,7 @@ Publish a small, useful, agent- and chat-agnostic continuity protocol with a reu
 ## Milestone Order
 | ID | Milestone | Status | Dependencies |
 | --- | --- | --- | --- |
-| M001 | Publish draft RAP specification and templates | Accepted (2026-11-12) | None |
+| M001 | Publish draft RADCOP specification and templates | Accepted (2026-11-12) | None |
 | M002 | Refine long-term state tracking, archival guidance, and consistency validation | Accepted (2026-11-13; closeout PR #2) | M001 (satisfied 2026-11-12) |
 | M003 | Gather additional interoperability feedback | Planned | M002 |
 
@@ -20,7 +20,7 @@ No milestone is currently active. M003 is planned; its activation requires an au
 Planned after M002 acceptance (now satisfied); improve compatibility without adding mandatory services. Not yet activated.
 
 ## Completed Milestone Index
-- **M001 — Publish draft RAP specification and templates:** Owner accepted 2026-11-12. Initial deliverables are committed; acceptance was explicitly provided in the project discussion. Historical implementation details remain in Git.
+- **M001 — Publish draft RADCOP specification and templates:** Owner accepted 2026-11-12. Initial deliverables are committed; acceptance was explicitly provided in the project discussion. Historical implementation details remain in Git.
 - **M002 — Refine long-term state tracking, archival guidance, and consistency validation:** Accepted by the owner on 2026-11-13 through merge of the explicitly designated closeout PR #2 (`eb5efea69bfefb0b4934bd8bc3c18afe7db80b7b`). Implementation includes specification §12, templates, skill guidance, conservative archive-link checks, and tests. The six passing local tests and zero structural findings were reported before the merge; a hosted CI success is not asserted here.
 
 ## Deferred or Out-of-scope Work
@@ -40,3 +40,6 @@ PR #1 merged into `main` on 2026-11-13 at `11e293b0201891c17a5ff1633f5d9e6404365
 
 ## Milestone Acceptance Workflow
 Milestone closeout requires explicit owner approval **before** merge. The closeout PR must request that approval, identify its acceptance disposition, and include the corresponding root-document changes. Upon authorized approval, merging the PR carries the accepted disposition into `main`; acceptance is not a separate post-merge decision. An unapproved closeout, ordinary implementation PR, automated merge, or merge by an actor without delegated acceptance authority does not establish milestone acceptance. Later factual reconciliation of merge metadata does not add a second approval gate.
+
+## RADCOP Naming Transition (Operational Work)
+The owner authorized renaming the public-facing protocol and repository from RAP to RADCOP while retaining the expansion *Repository-native, Agent-agnostic Development Continuity Protocol*. This naming refactor does not reopen M001/M002, activate M003, or alter accepted architectural decisions. The existing v0.2.0 tag and release assets remain historical RAP artifacts; the renamed distribution is intended for a subsequent release after PR review, merge, and repository rename.

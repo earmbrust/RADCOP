@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Read-only, dependency-free structural RAP document validator."""
+"""Read-only, dependency-free structural RADCOP document validator."""
 from __future__ import annotations
 
 import argparse
@@ -34,7 +34,7 @@ def local_references(content: str):
 
 
 def reference_warnings(root: Path, source: Path, content: str):
-    """Only flag unresolved relative references into the optional RAP archive."""
+    """Only flag unresolved relative references into the optional RADCOP archive."""
     findings = []
     base = root.resolve()
     for target, position in local_references(content):
@@ -46,11 +46,11 @@ def reference_warnings(root: Path, source: Path, content: str):
         except ValueError:
             continue
         parts = relative.parts
-        if len(parts) < 3 or parts[:2] != ("docs", "rap"):
+        if len(parts) < 3 or parts[:2] != ("docs", "radcop"):
             continue
         if not dest.is_file():
             line = content.count("\n", 0, position) + 1
-            findings.append(("WARNING", f"{source.relative_to(root)}:{line}: missing RAP archive link: {target}"))
+            findings.append(("WARNING", f"{source.relative_to(root)}:{line}: missing RADCOP archive link: {target}"))
     return findings
 
 
@@ -92,7 +92,7 @@ def main() -> int:
     errors = sum(level == "ERROR" for level, _ in findings)
     warnings = sum(level == "WARNING" for level, _ in findings)
     print(f"Structural check: {errors} error(s), {warnings} warning(s).")
-    print("Scope: required file structure and local docs/rap archive links in the three roots; NOT semantic audit, Git revision verification, or implementation verification.")
+    print("Scope: required file structure and local docs/radcop archive links in the three roots; NOT semantic audit, Git revision verification, or implementation verification.")
     return 1 if errors else 0
 
 

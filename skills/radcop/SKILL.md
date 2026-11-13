@@ -1,18 +1,18 @@
 ---
-name: rap
-description: Audit, reconcile, initialize, maintain, and hand off RAP's three authoritative repository documents (ARCHITECTURE.md, ROADMAP.md, PROJECT_STATE.md). Use in coding agents or ordinary chats when asked for /rap, RAP audit, consistency checks, milestone-state synchronization, or documentation continuity. Read-only audits by default; no unauthorized design or roadmap changes.
+name: radcop
+description: Audit, reconcile, initialize, maintain, and hand off RADCOP's three authoritative repository documents (ARCHITECTURE.md, ROADMAP.md, PROJECT_STATE.md). Use in coding agents or ordinary chats when asked for /radcop, RADCOP audit, consistency checks, milestone-state synchronization, or documentation continuity. Read-only audits by default; no unauthorized design or roadmap changes.
 ---
 
-# RAP — documentation audit and maintenance
+# RADCOP — documentation audit and maintenance
 
-RAP documents are the project's source of truth. **You are a helper, not a new project authority.** Work for one agent, many agents, or ordinary chats; never assume local repository access.
+RADCOP documents are the project's source of truth. **You are a helper, not a new project authority.** Work for one agent, many agents, or ordinary chats; never assume local repository access.
 
 ## First, establish scope
 
 1. Find the three root documents (`ARCHITECTURE.md`, `ROADMAP.md`, `PROJECT_STATE.md`) from accessible repository files or provided attachments. Ask for missing materials only if needed; perform a scoped audit with available inputs otherwise.
 2. When Git, files, tests, or filesystem are unavailable, say so. Do not claim to have read, edited, built, run, or verified anything you cannot inspect.
 3. Detect user intent: `audit` (default), `review`, `status`, `reconcile`, `sync`, `init`, or `handoff`. These are natural-language operation names, not mandatory CLI commands.
-4. Consult `references/AUDIT_GUIDE.md` for detailed checks and report structure; consult the RAP repository's `spec/RAP_SPECIFICATION.md` where available.
+4. Consult `references/AUDIT_GUIDE.md` for detailed checks and report structure; consult the RADCOP repository's `spec/RADCOP_SPECIFICATION.md` where available.
 
 ## Authority rules (mandatory)
 
@@ -47,7 +47,7 @@ After **verified** changes, propose or apply authorized documentation maintenanc
 
 ### init
 
-For missing root files, provide or copy RAP templates only after checking for existing content. Do not overwrite. Do not invent implemented features, decisions, tests, or approvals. Adapt labels while preserving document ownership.
+For missing root files, provide or copy RADCOP templates only after checking for existing content. Do not overwrite. Do not invent implemented features, decisions, tests, or approvals. Adapt labels while preserving document ownership.
 
 ### handoff
 
@@ -64,7 +64,7 @@ Check whether next participant can determine current state, next authorized mile
 
 ## Bounded context and historical records
 
-Consult `references/STATE_TRACKING.md` when reviewing long-running projects, archival proposals, or state growth. Root documents always retain their respective authority. Treat `docs/rap/` (or a project-selected alternate archive) as optional supporting history, **not** a competing source of truth.
+Consult `references/STATE_TRACKING.md` when reviewing long-running projects, archival proposals, or state growth. Root documents always retain their respective authority. Treat `docs/radcop/` (or a project-selected alternate archive) as optional supporting history, **not** a competing source of truth.
 
 During `audit`, examine active-versus-historical separation, stale or superseded entries, duplicated detailed logs, working links, and retention of active blockers, accepted constraints, outstanding discrepancies, last meaningful evidence, and next authorized work. Report context-health issues with locations; do not impose arbitrary length limits.
 
