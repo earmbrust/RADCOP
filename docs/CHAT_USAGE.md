@@ -1,0 +1,28 @@
+# RAP in ordinary chats
+
+RAP does not require an autonomous coding agent. The skill can operate through a native `/rap` command when supported, or as a file uploaded to any conversational assistant.
+
+## Chat without a repository connector
+
+Provide `skills/rap/SKILL.md` (and `references/AUDIT_GUIDE.md` if necessary) and whichever of the three documents you want audited. Example:
+
+> Follow the attached RAP skill. Audit the attached ARCHITECTURE.md, ROADMAP.md, and PROJECT_STATE.md for inconsistencies. Do not claim to have inspected the implementation. Produce proposed corrections, not silent decision changes.
+
+In this mode the assistant may perform a document-level consistency audit and draft updates; it cannot verify local source, builds, Git history, or tests without those materials.
+
+## Chat with repository/file access
+
+Ask for a RAP audit of the repository's three authoritative root documents. A capable assistant can optionally reconcile claims to code or Git evidence, report coverage, and make *authorized* documentation edits if file-write functionality exists.
+
+## Conversation-to-agent handoff
+
+A chat can propose an architecture or roadmap change. Only an approved change becomes authoritative in the corresponding document. Implementation agents consume those documents, and PROJECT_STATE records actual implementation and test evidence. A handoff is still possible when one participant has no memory of previous messages.
+
+## Example prompts
+
+- “Use RAP to audit these three documents. Report discrepancies without editing.”
+- “Use RAP to reconcile PROJECT_STATE against approved architecture and roadmap; suggest patches.”
+- “Use RAP to check whether the documents provide enough continuity for a new chat.”
+- “Use RAP to update state for this verified commit, but do not change design decisions.”
+
+`/rap` is a naming convention supported as a direct slash command only on platforms that expose skills that way.
