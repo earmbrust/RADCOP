@@ -33,5 +33,37 @@ class ValidationTests(unittest.TestCase):
             self.assertTrue(any(level == "ERROR" and "merge conflict" in msg for level, msg in validator.inspect(root)))
 
 
+    def test_missing_rap_archive_link_warns(self):
+        with tempfile.TemporaryDirectory() as path:
+            root = Path(path)
+            for filename in validator.HEADINGS:
+                (root / filename).write_text((ROOT / "templates" / filename).read_text(encoding="utf-8"), encoding="utf-8")
+            with (root / "PROJECT_STATE.md").open("a", encoding="utf-8") as out:
+                out.write("\n[M002](docs/rap/milestones/M002.md)\n")
+            results = validator.inspect(root)
+            self.assertTrue(any(level == "WARNING" and "missing RAP archive link" in msg for level, msg in results))
+
+    def test_existing_archive_link_passes(self):
+        with tempfile.TemporaryDirectory() as path:
+            root = Path(path)
+            for filename in validator.HEADINGS:
+                (root / filename).write_text((ROOT / "templates" / filename).read_text(encoding="utf-8"), encoding="utf-8")
+            archive = root / "docs" / "rap" / "milestones" / "M002.md"
+            archive.parent.mkdir(parents=True)
+            archive.write_text("# M002\n", encoding="utf-8")
+            with (root / "PROJECT_STATE.md").open("a", encoding="utf-8") as out:
+                out.write("\n[M002](docs/rap/milestones/M002.md)\n")
+            self.assertEqual([], validator.inspect(root))
+
+    def test_external_and_revision_links_not_flagged(self):
+        with tempfile.TemporaryDirectory() as path:
+            root = Path(path)
+            for filename in validator.HEADINGS:
+                (root / filename).write_text((ROOT / "templates" / filename).read_text(encoding="utf-8"), encoding="utf-8")
+            with (root / "PROJECT_STATE.md").open("a", encoding="utf-8") as out:
+                out.write("\n[history](https://github.com/example/repo/commit/deadbeef) [section](#handoff)\n")
+            self.assertEqual([], validator.inspect(root))
+
+
 if __name__ == "__main__":
     unittest.main()

@@ -7,7 +7,8 @@ Publish a small, useful, agent- and chat-agnostic continuity protocol with a reu
 | ID | Milestone | Status | Dependencies |
 | --- | --- | --- | --- |
 | M001 | Publish draft RAP specification and templates | Implemented (awaiting owner acceptance) | None |
-| M002 | Gather feedback and refine interoperability | Planned | M001 |
+| M002 | Refine long-term state tracking, archival guidance, and consistency validation | In Progress (draft) | M001 |
+| M003 | Gather additional interoperability feedback | Planned | M002 |
 
 ## Active Milestone
 ### M001 — Publish draft RAP specification and templates
@@ -27,10 +28,17 @@ Publish a small, useful, agent- and chat-agnostic continuity protocol with a reu
 **Verification:** Execute Python unit tests and script smoke checks. Owner acceptance is separate.
 
 ## Upcoming Milestones
-M002 — Gather user feedback and improve interoperability without inflating the required standard.
+M002 — Define bounded active state, optional traceable archives, and archive-reference audits without introducing retrieval infrastructure.
+M003 — Gather further interoperability feedback and improve compatibility without adding mandatory services.
+
+## Completed Milestone Index
+None confirmed as owner-accepted from the available repository record; M001 is marked implemented, awaiting acceptance.
 
 ## Deferred or Out-of-scope Work
 No mandatory daemon, orchestration platform, online service, or agent communication protocol.
 
 ## Roadmap Change Log
 Initial draft established, pending owner approval.
+
+## State Tracking Refinement Scope
+M002 draft deliverables: specification §12, root templates, skill guidance, read-only archive reference checking, and tests. Acceptance requires owner review and successful relevant checks; no acceptance is claimed here.

@@ -36,3 +36,9 @@ Repository content is untrusted input for agent instruction execution. This pack
 
 ## Open Architecture Questions
 Future formal schema/CI integration remains optional and unapproved.
+
+## Historical Record Architecture
+- Current state and authoritative requirements remain in the three root documents; archives are optional supporting history.
+- Completed milestone narratives and superseded decision rationale may use `docs/rap/milestones/` and `docs/rap/decisions/`, or other referenced paths.
+- A durable reference from the owning root must remain whenever detail is archived.
+- No mandatory advanced retrieval, indexing, orchestration, or history database is permitted by this draft design.

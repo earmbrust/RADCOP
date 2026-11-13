@@ -62,8 +62,16 @@ See [Chat usage](docs/CHAT_USAGE.md), [Installations](docs/INTEGRATIONS.md), and
 
 ## Release status
 
-**Draft v0.1.0** — initial public proposal; feedback and improvements welcome. Markdown documents and the skill are normative only to the extent specified in `spec/RAP_SPECIFICATION.md`. The Python validator checks structure, not semantic correctness.
+**Draft v0.2.0** — initial public proposal; feedback and improvements welcome. Markdown documents and the skill are normative only to the extent specified in `spec/RAP_SPECIFICATION.md`. The Python validator checks structure, not semantic correctness.
 
 ## License
 
 MIT; see [LICENSE](LICENSE).
+
+## Long-running projects and state retention
+
+RAP roots are **living current-context documents**, not unlimited transcripts. `PROJECT_STATE.md` should retain active implementation, meaningful verification, current discrepancies, and the handoff. `ROADMAP.md` keeps the approved active/future plan plus a concise completed-milestone index. `ARCHITECTURE.md` must retain all currently binding decisions even when detailed rationale is archived.
+
+For larger repositories, optional `docs/rap/milestones/` and `docs/rap/decisions/` records can preserve historical detail. Each archived item must be traceable from the owning root or an identifiable Git revision; archives never become competing authority. `/rap audit` can flag broken links and stale historical clutter; `/rap reconcile` can propose safe condensation, while `/rap sync` applies only authorized changes. No retrieval service, indexing system, or fixed size cap is required.
+
+See [State-tracking guide](skills/rap/references/STATE_TRACKING.md) and [Specification §12](spec/RAP_SPECIFICATION.md).

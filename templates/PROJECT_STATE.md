@@ -10,10 +10,13 @@
 Summarize only what exists and has been verified. Include evidence and revision when available.
 
 ## Actions and Outcomes
-Record noteworthy changes and completed actions with traceable commit/PR or other evidence where available.
+Keep a concise summary of **recent and material** outcomes. Refer to archived completed-milestone records or Git revisions for older details. This is not an append-only transcript.
+
+## Historical References
+Link to relevant completed milestones and historical decisions when detail has been archived. This section is optional until archives exist; never remove still-binding decisions or active issues just because their history is archived.
 
 ## Accepted Decision Record
-Record accepted decisions and rationale; reference ARCHITECTURE or ROADMAP where those own the decision. Mark superseded entries.
+Keep current decision outcomes and references to ARCHITECTURE or ROADMAP where those own the decision. Historical rationale may be archived, but a state entry must not override either owning document. Mark superseded entries.
 
 ## Known Issues and Discrepancies
 Track implementation deviations, documentation contradictions, blockers, and unresolved investigations. Do not silently rewrite decisions to match code.

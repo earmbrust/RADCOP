@@ -26,3 +26,6 @@ Record explicitly disallowed implementation patterns or dependencies.
 
 ## Open Architecture Questions
 List unresolved questions; proposals are not accepted decisions.
+
+## Historical Decision References
+Optional links to historical rationale or superseded design alternatives. All currently binding decisions and constraints MUST remain recorded above; history links do not replace them.

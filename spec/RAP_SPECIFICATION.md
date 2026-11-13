@@ -1,6 +1,6 @@
 # RAP Specification
 
-Version: **0.1.0-draft**  
+Version: **0.2.0-draft**  
 Status: **Draft**  
 Scope: Repository documentation continuity, not agent communication or execution protocols.
 
@@ -73,4 +73,30 @@ A project is **RAP document-conformant** if it has all three documents and meets
 
 ## 11. Future considerations (not mandatory)
 
-Machine-readable decision IDs, ADR archives, automated link checks, formal schemas, CI gates, and interoperability adapters can be added without changing the three-document foundation. Avoid turning these into v0.1 prerequisites.
+Machine-readable decision IDs, richer automated link checks, formal schemas, CI gates, and interoperability adapters may be added without changing the three-document foundation. Archival conventions in §12 are optional; no retrieval engine is required.
+
+## 12. Bounded current state and historical traceability
+
+### 12.1 Current operational context
+
+The required root documents remain authoritative. They MUST present enough **current, actionable context** for a participant with no previous chat history to determine active work, constraints, observed implementation, evidence, discrepancies, and next steps. They SHOULD NOT become append-only transcripts. Growth alone is never grounds for deleting unresolved issues, accepted decisions, or evidence required to interpret current state.
+
+PROJECT_STATE MUST distinguish **active state** from **historical outcomes**. Active state includes the current implementation snapshot, active milestone, last known verification, ongoing or blocked work, deviations, and handoff. Historical outcomes include completed steps, retired blockers, and superseded observations. Older material MAY be condensed or archived when the root retains a concise accurate summary and traceable reference.
+
+ROADMAP MUST retain the active ordered plan and enough of a completed-milestone index to locate its history. ARCHITECTURE MUST retain currently binding design/constraints even when rationale is archived. An archive MUST NOT implicitly supersede an accepted requirement or introduce competing authority.
+
+### 12.2 Optional archives
+
+Projects MAY use `docs/rap/milestones/` and `docs/rap/decisions/` as conventional locations for detailed historical records. These directories are NOT required for conformance. Other paths MAY be used when discoverable from the root documents. Archival records are **supporting evidence and history**, not fourth, fifth, or replacement authorities. Detailed records SHOULD include stable identifiers, date or revision when known, summary, outcome, provenance, and any supersession relationship.
+
+When material is archived, its authoritative root MUST preserve (1) any **still-binding** rule or decision, (2) a concise outcome or current status as appropriate, and (3) a reference to the archived record or a permanent VCS revision. A relative path reference MUST resolve within the repository as reviewed; a Git revision reference MUST be identifiable. Do not assert a path or revision exists without checking when access is available.
+
+### 12.3 Safe condensation and reconciliation
+
+Archival and condensation MUST NOT silently discard, fabricate, or revise accepted design/scope decisions; active blockers; unresolved discrepancies; the most recent meaningful verification; or next authorized work. Proposed substantive changes require owner approval as in §5. `/rap audit` MUST remain read-only. `/rap reconcile` SHOULD present a before/after summary and identify what stays active, what is condensed, what is archived, and why. `/rap sync` MAY perform authorized, verified maintenance. Where evidence is inaccessible, report `NOT_CHECKED` rather than asserting that archive links or Git history were validated.
+
+A project MAY maintain an abbreviated root milestone history and archived supporting details. It SHOULD prefer stable references over duplicate narratives. No fixed token limit, mandatory archival threshold, vector database, indexing service, or agent orchestration dependency is introduced.
+
+### 12.4 Historical record integrity
+
+Historical records MUST distinguish accepted decisions from proposals and mark superseded decisions explicitly. History MUST NOT be edited to imply that current facts or decisions were always true. If an archive contradicts a root document, the owning root document governs current decisions/status in its own domain; the contradiction SHOULD be reported for investigation, rather than silently rewritten. Normal Git review/merge policies govern concurrent archival edits.

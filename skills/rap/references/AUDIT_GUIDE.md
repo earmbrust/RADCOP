@@ -47,3 +47,7 @@ Not checked: [...]
 ## No false certification
 
 The standalone `validate_rap.py` only checks document presence/structure and merge markers. Never present its success as semantic reconciliation, repository implementation verification, or owner acceptance.
+
+## Context-retention checks
+
+Read `STATE_TRACKING.md` for the archival policy. Look for excessive historical detail obscuring active work, stale state, loss of permanent references, missing archived files, still-binding constraints present only in archives, and inability to reconstruct a handoff without loading old history. A read-only audit may recommend condensation but MUST NOT itself modify documents.

@@ -23,3 +23,7 @@ Platform documentation checked when drafting:
 - Cline: https://github.com/cline/cline/blob/main/docs/customization/skills.mdx
 - Copilot / VS Code: https://code.visualstudio.com/docs/agent-customization/agent-skills
 - GitHub Copilot: https://docs.github.com/en/copilot/how-tos/copilot-on-github/customize-copilot/customize-cloud-agent/add-skills
+
+## State-tracking compatibility
+
+The canonical skill also installs `references/STATE_TRACKING.md`. It supports optional historical archives while leaving the three required root documents unchanged. No indexing tool, Git hook, or retrieval service is needed to use this guidance.

@@ -28,6 +28,9 @@ Describe the outcomes the project is intended to achieve.
 ## Upcoming Milestones
 List future milestones in their intended order.
 
+## Completed Milestone Index
+Keep a concise index of completed milestone IDs, outcomes, acceptance status (if known), and links to archived detail or Git revisions. Archival is optional; do not invent acceptance.
+
 ## Deferred or Out-of-scope Work
 List excluded work without implying approval to implement it.
 

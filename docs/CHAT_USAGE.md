@@ -26,3 +26,7 @@ A chat can propose an architecture or roadmap change. Only an approved change be
 - “Use RAP to update state for this verified commit, but do not change design decisions.”
 
 `/rap` is a naming convention supported as a direct slash command only on platforms that expose skills that way.
+
+## Long-term project state
+
+For long-running projects, ask “Use RAP to audit the current-state snapshot and historical references” or “Propose an archive plan without editing.” Chat assistants with only the three roots can check internal consistency, but MUST mark file existence, Git revisions, and repository evidence `NOT_CHECKED` unless independently accessible. Archive proposals must preserve accepted requirements and active blockers in their owning roots.
