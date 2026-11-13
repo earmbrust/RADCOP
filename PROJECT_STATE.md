@@ -3,17 +3,17 @@
 ## Current Snapshot
 - Active milestone: None. M002 was accepted on 2026-11-13; M003 remains planned, not activated.
 - M001 was owner-accepted on 2026-11-12. M002 was owner-accepted through the owner’s merge of explicitly designated closeout PR #2 on 2026-11-13.
-- Current implementation: RADCOP v0.2.0 draft specification, root templates, optional skill, structural validator, archive-reference checks, and tests are on `main`. Release automation and M002 closeout documentation were merged through PRs #1 and #2.
-- Repository baseline inspected: PR #2 merge commit `eb5efea69bfefb0b4934bd8bc3c18afe7db80b7b` on `main` (2026-11-13).
+- Current implementation: RADCOP v0.2.1 draft specification, root templates, optional `/radcop` skill, structural validator, archive-reference checks, and tests are on `main`. The v0.2.1 release is published with an archive and checksum.
+- Repository: `earmbrust/RADCOP`, default branch `main`. PR #4 merged the RADCOP naming update; the repository was renamed, and v0.2.1 was released on 2026-11-13.
 - Verification provenance: Six passing local Python tests and zero structural findings were reported for the pre-merge closeout changes. The GitHub merge was independently confirmed; hosted CI success at the merged revision was not independently confirmed in this reconciliation.
-- Last reconciled: 2026-11-13; recognized owner approval through merge of designated M002 closeout PR #2. No extra post-merge acceptance is required.
+- Last reconciled: 2026-11-13; project documentation updated to reflect the verified v0.2.1 release. M003 remains planned and is not automatically activated.
 
 ## Verified Implementation
 - The merged tree contains specification §12 with bounded state, optional archives, safe condensation, and historical-record integrity.
 - Root templates retain current state, active milestone, completed milestone index, constraints, and handoff obligations in their respective ownership domains.
 - The `/radcop` skill and state-tracking guidance describe read-only auditing, reconciliation, authorized synchronization, archive traceability, and evidence limitations.
 - The Python structural validator checks the required root files and conventional inline links to optional `docs/radcop/` archives; associated tests cover existing and missing archive references. This does not constitute a full semantic or Markdown-link audit.
-- PR #1 merged CI and tagged-release workflow definitions into `main`. Hosted runs and published release behavior are not established by source inspection alone.
+- CI and tagged-release workflows are present on `main`; GitHub Actions release runs for v0.2.0 and v0.2.1 completed successfully and published their expected archive and checksum assets.
 
 ## Actions and Outcomes
 - M001: Owner accepted the initial specification, templates, skill, installer and validator on 2026-11-12.
@@ -31,22 +31,21 @@
 ## Known Issues and Discrepancies
 - M002 acceptance is complete via owner merge of designated PR #2. Hosted CI at the merge revision was not independently verified; do not convert this evidence limitation into a fabricated pass or an additional acceptance gate.
 - Existing structural validation intentionally does not certify semantic accuracy, all Markdown link forms, or source-to-document correspondence; these are stated scope limits, not verified capabilities.
-- GitHub release publication and tagged-workflow execution remain unverified; neither is claimed as completed.
+- A successful release workflow demonstrates packaging and configured checks, not semantic conformity of every document or external interoperability.
 
 ## Verification Evidence
 - 2026-11-13: GitHub PR #1 is confirmed merged, with `main` at `11e293b0201891c17a5ff1633f5d9e640436556e`.
 - 2026-11-13: Read-only review of merged source for M002 criteria: specification §12, root templates, optional skill guidance, `scripts/validate_radcop.py`, and `tests/test_tools.py`.
 - Earlier owner-provided local logs reported six successful Python tests and zero structural errors/warnings on the pre-merge branch. This is reported evidence, not independently reproduced execution at `11e293b`.
-- PR #2 was merged by the owner on 2026-11-13 at `eb5efea69bfefb0b4934bd8bc3c18afe7db80b7b`, establishing M002 acceptance. No success claim is made for GitHub Actions or a published GitHub Release.
-
-## Rebrand Implementation (Pending Merge)
-- 2026-11-13: The owner authorized a RAP-to-RADCOP naming refactor after the v0.2.0 release; this branch updates naming and tool paths without changing the accepted document authority model or M003 activation. Repository rename and the next release remain separate, unverified operations until completed.
+- PR #2 was merged by the owner on 2026-11-13 at `eb5efea69bfefb0b4934bd8bc3c18afe7db80b7b`, establishing M002 acceptance; that historical acceptance is separate from subsequent release verification.
+- 2026-11-13: GitHub Actions release run `43498181500` passed for v0.2.0.
+- 2026-11-13: GitHub Actions release run `43502383093` passed for v0.2.1, publishing `RADCOP-v0.2.1.zip` and `RADCOP-v0.2.1.zip.sha256`. The archive SHA-256 reported by GitHub is `cd31bcc5f97bcef877f17bf4d502b00a91633ae05c0b50e16735f4d195b4acff`.
 
 ## Handoff
-- Last completed action: M002 closeout PR #2 approved and merged by the owner; acceptance recognized and documented.
-- Next expected action: Review this post-merge documentation reconciliation on a short-lived branch and merge through PR; then prepare the v0.2.0 release separately. M003 remains planned pending authorization.
-- Open blockers: No M002 owner-acceptance blocker remains. Release publication and hosted workflow evidence are not yet verified.
-- Context/evidence gaps: No independently confirmed hosted workflow result or tagged-release execution. Local test evidence is attributed to the pre-merge run.
+- Last completed action: RADCOP v0.2.1 was published successfully; both distribution artifacts are available.
+- Next expected action: Complete public-readiness review, publish the repository when authorized, and collect external interoperability feedback for planned M003.
+- Open blockers: No M001/M002 acceptance or release-publication blocker remains. Public visibility and M003 activation require deliberate owner action.
+- Context/evidence gaps: Broad external interoperability and semantic correspondence with adopting projects have not yet been verified.
 
 ## Historical References
 - M001 implementation and PR #1 integration are traceable through Git history at `11e293b0201891c17a5ff1633f5d9e640436556e`; M002 acceptance is traceable through merged PR #2 at `eb5efea69bfefb0b4934bd8bc3c18afe7db80b7b`. Optional archive records under `docs/radcop/` are not required for M002.
