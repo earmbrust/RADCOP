@@ -33,7 +33,7 @@ class ValidationTests(unittest.TestCase):
             self.assertTrue(any(level == "ERROR" and "merge conflict" in msg for level, msg in validator.inspect(root)))
 
 
-    def test_missing_rap_archive_link_warns(self):
+    def test_missing_radcop_archive_link_warns(self):
         with tempfile.TemporaryDirectory() as path:
             root = Path(path)
             for filename in validator.HEADINGS:
