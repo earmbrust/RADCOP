@@ -7,3 +7,26 @@ For proposed changes, explain the failure mode, normative behavior proposed, com
 ## Public draft governance
 
 This is a draft proposal, not a formal standards-body specification. Changes to decision authority and required files should be reviewed explicitly before inclusion in the public spec.
+
+## Branch and release workflow
+
+`main` is the authoritative branch. Use short-lived branches and merge them into `main` through a pull request:
+
+- `feature/<description>` for new capabilities.
+- `fix/<description>` for non-urgent defect fixes.
+- `hotfix/<description>` for urgent release fixes.
+- `chore/<description>` for maintenance, CI, and tooling.
+- `docs/<description>` for documentation-only work.
+
+The CI workflow runs the Python unit tests and structural validator for pull requests targeting `main` and for pushes to `main`. Repository branch protection is configured separately in GitHub; this repository workflow does not itself prohibit direct pushes.
+
+To publish a release, merge the accepted release commit into `main`, then create and push an annotated semantic-version tag such as `v0.2.0`:
+
+```powershell
+git switch main
+git pull --ff-only
+git tag -a v0.2.0 -m "RAP v0.2.0"
+git push origin v0.2.0
+```
+
+The release workflow accepts only `vMAJOR.MINOR.PATCH` tags whose commits are in `main` history. It runs validation, packages the exact tagged tree as `RAP-vMAJOR.MINOR.PATCH.zip`, omits Git metadata and repository-only files, writes a SHA-256 checksum, and attaches both assets to the matching GitHub Release.
