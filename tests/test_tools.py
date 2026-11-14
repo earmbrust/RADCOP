@@ -64,6 +64,55 @@ class ValidationTests(unittest.TestCase):
                 out.write("\n[history](https://github.com/example/repo/commit/deadbeef) [section](#handoff)\n")
             self.assertEqual([], validator.inspect(root))
 
+    def _project_with_link(self, path, link):
+        root = Path(path)
+        for filename in validator.HEADINGS:
+            (root / filename).write_text((ROOT / "templates" / filename).read_text(encoding="utf-8"), encoding="utf-8")
+        with (root / "ARCHITECTURE.md").open("a", encoding="utf-8") as out:
+            out.write(f"\n[ADR 0001]({link})\n")
+        return root
+
+    def test_alternate_archive_link_ignored_by_default(self):
+        with tempfile.TemporaryDirectory() as path:
+            root = self._project_with_link(path, "docs/adr/0001.md")
+            self.assertEqual([], validator.inspect(root))
+
+    def test_missing_alternate_archive_link_warns_when_configured(self):
+        with tempfile.TemporaryDirectory() as path:
+            root = self._project_with_link(path, "docs/adr/0001.md")
+            results = validator.inspect(root, ("docs/radcop", "docs/adr"))
+            self.assertEqual(1, len(results))
+            level, message = results[0]
+            self.assertEqual("WARNING", level)
+            self.assertIn("docs/adr/0001.md", message)
+
+    def test_existing_alternate_archive_link_passes(self):
+        with tempfile.TemporaryDirectory() as path:
+            root = self._project_with_link(path, "docs/adr/0001.md")
+            (root / "docs" / "adr").mkdir(parents=True)
+            (root / "docs" / "adr" / "0001.md").write_text("# ADR 0001\n", encoding="utf-8")
+            self.assertEqual([], validator.inspect(root, ("docs/radcop", "docs/adr")))
+
+    def test_default_archive_still_checked_alongside_alternate(self):
+        with tempfile.TemporaryDirectory() as path:
+            root = self._project_with_link(path, "docs/radcop/decisions/D001.md")
+            results = validator.inspect(root, ("docs/radcop", "docs/adr"))
+            self.assertTrue(any(level == "WARNING" and "missing RADCOP archive link" in msg for level, msg in results))
+
+    def test_archive_root_prefix_is_matched_by_path_component(self):
+        with tempfile.TemporaryDirectory() as path:
+            root = self._project_with_link(path, "docs/adr-drafts/0001.md")
+            self.assertEqual([], validator.inspect(root, ("docs/adr",)))
+
+    def test_archive_root_normalisation(self):
+        self.assertEqual(("docs", "adr"), validator.archive_root_parts("./docs/adr/"))
+        self.assertEqual(("docs", "adr"), validator.archive_root_parts("docs\\adr"))
+
+    def test_archive_root_outside_repository_rejected(self):
+        for value in ("", ".", "../elsewhere", "docs/../../x", "/etc", "C:\\archive"):
+            with self.assertRaises(ValueError, msg=value):
+                validator.archive_root_parts(value)
+
 
 if __name__ == "__main__":
     unittest.main()

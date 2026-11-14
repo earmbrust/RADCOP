@@ -32,6 +32,8 @@ A RADCOP project contains exactly three required authoritative documents at its 
    python C:\path\to\RADCOP\scripts\validate_radcop.py --root C:\development\my-project
    ```
 
+   Links into `docs/radcop/` are checked by default. If your project keeps its archive elsewhere, add `--archive-root docs/adr` (repeatable) so those links are checked too.
+
 5. Ask your assistant to **“Use RADCOP to audit these documents”** or invoke `/radcop` if its platform supports slash-command skill invocation.
 
 ## Skill operations
