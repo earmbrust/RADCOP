@@ -13,6 +13,19 @@ HEADINGS = {
     "PROJECT_STATE.md": ("Current Snapshot", "Verified Implementation", "Known Issues and Discrepancies", "Handoff"),
 }
 
+# Conventional archive location (specification 12.2). Projects MAY keep history
+# elsewhere, so further repository-relative directories can be supplied.
+DEFAULT_ARCHIVE_ROOTS = ("docs/radcop",)
+
+
+def archive_root_parts(value: str) -> tuple[str, ...]:
+    """Normalise a repository-relative archive directory into path parts."""
+    text = value.strip().replace("\\", "/")
+    parts = tuple(part for part in text.split("/") if part and part != ".")
+    if not parts or ".." in parts or text.startswith("/") or re.match(r"[A-Za-z]:", text):
+        raise ValueError(f"archive root must be a relative directory inside the repository: {value!r}")
+    return parts
+
 
 def local_references(content: str):
     """Yield Markdown link targets, excluding HTTP URLs and non-path fragments."""
@@ -33,9 +46,10 @@ def local_references(content: str):
         yield unquote(parsed.path), match.start()
 
 
-def reference_warnings(root: Path, source: Path, content: str):
-    """Only flag unresolved relative references into the optional RADCOP archive."""
+def reference_warnings(root: Path, source: Path, content: str, archive_roots=DEFAULT_ARCHIVE_ROOTS):
+    """Only flag unresolved relative references into the optional RADCOP archive(s)."""
     findings = []
+    archives = [archive_root_parts(value) for value in archive_roots]
     base = root.resolve()
     for target, position in local_references(content):
         if not target or target.startswith("/") or "\\" in target:
@@ -46,7 +60,7 @@ def reference_warnings(root: Path, source: Path, content: str):
         except ValueError:
             continue
         parts = relative.parts
-        if len(parts) < 3 or parts[:2] != ("docs", "radcop"):
+        if not any(len(parts) > len(archive) and parts[: len(archive)] == archive for archive in archives):
             continue
         if not dest.is_file():
             line = content.count("\n", 0, position) + 1
@@ -54,7 +68,7 @@ def reference_warnings(root: Path, source: Path, content: str):
     return findings
 
 
-def inspect(root: Path) -> list[tuple[str, str]]:
+def inspect(root: Path, archive_roots=DEFAULT_ARCHIVE_ROOTS) -> list[tuple[str, str]]:
     findings: list[tuple[str, str]] = []
     for filename, expected in HEADINGS.items():
         path = root / filename
@@ -75,7 +89,7 @@ def inspect(root: Path) -> list[tuple[str, str]]:
         for heading in expected:
             if heading.lower() not in headers:
                 findings.append(("WARNING", f"{filename}: missing recommended heading '{heading}'"))
-        findings.extend(reference_warnings(root, path, content))
+        findings.extend(reference_warnings(root, path, content, archive_roots))
         if len(content.strip()) < 120:
             findings.append(("WARNING", f"{filename}: unusually short; review content completeness"))
     return findings
@@ -84,15 +98,31 @@ def inspect(root: Path) -> list[tuple[str, str]]:
 def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--root", type=Path, default=Path.cwd(), help="repository root (default: cwd)")
+    parser.add_argument(
+        "--archive-root",
+        action="append",
+        default=[],
+        metavar="DIR",
+        help="additional repository-relative archive directory whose links are checked, "
+        "e.g. docs/adr (repeatable; docs/radcop is always checked)",
+    )
     args = parser.parse_args()
     root = args.root.resolve()
-    findings = inspect(root)
+    archive_roots = list(DEFAULT_ARCHIVE_ROOTS)
+    for value in args.archive_root:
+        try:
+            normalised = "/".join(archive_root_parts(value))
+        except ValueError as exc:
+            parser.error(str(exc))
+        if normalised not in archive_roots:
+            archive_roots.append(normalised)
+    findings = inspect(root, archive_roots)
     for severity, message in findings:
         print(f"[{severity}] {message}")
     errors = sum(level == "ERROR" for level, _ in findings)
     warnings = sum(level == "WARNING" for level, _ in findings)
     print(f"Structural check: {errors} error(s), {warnings} warning(s).")
-    print("Scope: required file structure and local docs/radcop archive links in the three roots; NOT semantic audit, Git revision verification, or implementation verification.")
+    print(f"Scope: required file structure and local {', '.join(archive_roots)} archive links in the three roots; NOT semantic audit, Git revision verification, or implementation verification.")
     return 1 if errors else 0
 
 
