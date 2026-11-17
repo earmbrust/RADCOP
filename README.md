@@ -34,6 +34,8 @@ A RADCOP project contains exactly three required authoritative documents at its 
 
    Links into `docs/radcop/` are checked by default. If your project keeps its archive elsewhere, add `--archive-root docs/adr` (repeatable) so those links are checked too.
 
+   Add `--git` to compare `PROJECT_STATE.md`'s `Last verified revision` and `Last reconciled` fields with Git history. It warns when the revision is missing from history or not an ancestor of `HEAD`, or when more than `--stale-after N` commits (default 20) outside the three root documents are newer than the recorded state. Anything it cannot check, such as a missing field or a shallow clone, is reported as `NOT_CHECKED`. These are read-only hints that the state may be out of date, not proof that it is correct.
+
 5. Ask your assistant to **“Use RADCOP to audit these documents”** or invoke `/radcop` if its platform supports slash-command skill invocation.
 
 ## Skill operations
